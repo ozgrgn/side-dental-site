@@ -9,7 +9,7 @@
 </script>
 
 <button
-  class="relative flex p-4 bg-light-300 border-light-300 rounded-md text-white/90 drop-shadow shadow-xl disabled:opacity-75 {customClass} {active
+  class="relative flex p-3 bg-light-300 border-light-300 rounded-md text-white/90 drop-shadow shadow-xl disabled:opacity-75 {customClass} {active
     ? activeClass
     : ''} "
   on:click={() => {

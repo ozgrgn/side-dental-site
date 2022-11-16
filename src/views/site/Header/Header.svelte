@@ -10,6 +10,7 @@
       window.scrollTo(0, 0);
     }
   }
+
   let active = false;
   let drawerOpen = false;
   const changeNavStatus = () => {
@@ -25,7 +26,7 @@
 <div class="	">
 <Top />
 <div
-  class="sticky box-shadow shadow-lg mx-auto top-0 left-0 z-[20] bg-white text-dark-400 lg:h-16 "
+  class="sticky top-0 left-0 z-[20] text-dark-400 lg:h-16 {$location.pathname=="/"? "bg-white box-shadow shadow-lg":"bg-transparent border-t"}"
 >
   <div class="mobile lg:hidden grid h-full grid-cols-11">
     <div class="flex items-center p-2">
@@ -40,7 +41,7 @@
           xmlns="http://www.w3.org/2000/svg"
           width="18"
           height="18"
-          fill="currentColor"
+          fill=#bc74a5
           viewBox="0 0 16 16"
         >
           {@html !active ? Svg.openedToggle : Svg.closedToggle}
@@ -64,10 +65,10 @@
   </div>
 
   <div
-    class="desktop hidden container lg:flex xl:container items-center flex-row bg-white text-dark-400 h-full w-full mx-auto z-[20]  "
+    class="desktop hidden container lg:flex xl:container items-center flex-row text-dark-400 h-full w-full mx-auto z-[20] {$location.pathname=="/"? "bg-white":"bg-transparent"} "
   >
     <div
-      class="hidden items-center lg:flex basis-8/12 gap-8 h-full bg-white relative  "
+      class="hidden items-center lg:flex basis-8/12 gap-8 h-full relative {$location.pathname=="/"? "bg-white":"bg-transparent"} "
     >
       <AItem active={$location.pathname == "/"} path="/">Ana Sayfa</AItem>
       <AItem active={$location.pathname == "/about"} path="/about"
@@ -76,19 +77,19 @@
       <AItem active={$location.pathname == "/treatments"} path="/treatments"
         >Tedaviler</AItem
       >
-      <AItem active={$location.pathname == "/treatments"} path="/treatments"
+      <AItem active={$location.pathname == "/side-dental"} path="/side-dental"
         >Side Dental Solutions</AItem
       >
     </div>
 
     <div
-      class="hidden lg:flex items-center justify-end basis-4/12 gap-4 relative h-full bg-white"
+      class="hidden lg:flex items-center justify-end basis-4/12 gap-4 relative h-full {$location.pathname=="/"? "bg-white":"bg-transparent"}"
     >
       <svg
         class="h-5"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="#ef663a"
+        fill=#bc74a5
       >
         {@html Svg.facebook}
       </svg>
@@ -96,7 +97,7 @@
         class="h-5"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
-        fill="#ef663a"
+        fill=#bc74a5
       >
         {@html Svg.instagram}
       </svg>
@@ -104,7 +105,7 @@
         class="h-6"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="#ef663a"
+        fill="#bc74a5"
       >
         {@html Svg.youtube}
       </svg>
@@ -112,7 +113,7 @@
       class="h-5"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      fill="#ef663a"
+      fill=#bc74a5
     >
       {@html Svg.whatsapp}
     </svg>

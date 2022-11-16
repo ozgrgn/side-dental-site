@@ -8,19 +8,21 @@ export default {
     extend: {
       colors: {
         dark: {
-         
-          300: "#3b3c3f",
-  
+          50:"#fafbfd",
+          100: "#f2f2f2",
+          300: "#374151",
         },
         light: {
-          300: "#ef663a",
+          300: "#bc74a5",
         },
 
         custom: {
           whatsapp: "#1db656",
           telegram: "#37aee2",
+          gcolor: "#fcbf02",
+          tcolor: "#00b67b",
+          fcolor: "#4267b2",
         },
-       
       },
       fontFamily: {
         titillium: "var(--font-family)",
@@ -28,9 +30,5 @@ export default {
     },
   },
 
-  
-
-  plugins: [
-    forms
-  ],
+  plugins: [forms],
 };
