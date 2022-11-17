@@ -1,9 +1,8 @@
 <script>
   import Footer from "$components/Footers/Footer.svelte";
-  import FooterAdmin from "$components/Footers/FooterAdmin.svelte";
-  import FooterSmall from "$components/Footers/FooterSmall.svelte";
   import { Route, Router } from "svelte-navigator";
   import About from "./About/About.svelte";
+  import Contact from "./Contact/Contact.svelte";
   import Header from "./Header/Header.svelte";
   import Index from "./Home/Index.svelte";
   import Treatments from "./Treatments/Treatments.svelte";
@@ -17,6 +16,7 @@
         <Route path="/" component={Index} />
         <Route path="/about" component={About} />
         <Route path="/treatments" component={Treatments} />
+        <Route path="/contact" component={Contact} />
       </Router>
     </div>
   </div>

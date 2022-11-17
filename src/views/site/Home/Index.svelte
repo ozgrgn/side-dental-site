@@ -4,7 +4,7 @@
   import SmallSlider from "$components/SmallSlider.svelte";
   import Box1 from "./Box1.svelte";
   import Box2 from "./Box2.svelte";
-  import Map from "./Map.svelte";
+  import Map from "../Shared/Map.svelte";
   import Treatments from "../../../components/Shared/Treatments.svelte";
   import Reviews from "$components/Shared/Reviews.svelte";
 </script>
@@ -38,7 +38,6 @@
   </div>
   <div class="pt-24" />
   <Treatments customClass="pt-28" />
-
 </div>
 <div class=" px-6  py-10  bg-white">
   <div class="container mx-auto">
@@ -51,6 +50,7 @@
   <div class=" bg-white ">
     <Reviews />
   </div>
-  
-</div><div class="pb-16  bg-dark-100">
-  <Map /></div>
+</div>
+<div class="pb-16 bg-dark-100">
+  <Map title={true} mapBox="mapWorking" />
+</div>

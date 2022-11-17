@@ -6,7 +6,7 @@
   let phone;
 </script>
 
-<div class="w-full bg-white rounded-lg flex flex-col">
+<div class="w-full bg-white rounded-lg flex flex-col shadow-2xl">
   <h3
     class="text-4xl text-light-300 border-b h-20 flex flex-col justify-center mx-16 "
   >

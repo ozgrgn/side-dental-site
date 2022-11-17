@@ -6,6 +6,7 @@
   export let value;
   export let isValid;
   export let required;
+  export let customClass = "";
 
   export let placeholder = "Please type something";
   let validate, validity;
@@ -26,7 +27,7 @@
 </script>
 
 <textarea
-  class="border-0 px-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full  min-h-[10rem]"
+  class=" {customClass} border-0 px-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full  min-h-[10rem]"
   bind:value
   {placeholder}
   class:field-danger={!$validity.valid}

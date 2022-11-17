@@ -77,8 +77,8 @@
       <AItem active={$location.pathname == "/treatments"} path="/treatments"
         >Tedaviler</AItem
       >
-      <AItem active={$location.pathname == "/side-dental"} path="/side-dental"
-        >Side Dental Solutions</AItem
+      <AItem active={$location.pathname == "/contact"} path="/contact"
+        >Contact</AItem
       >
     </div>
 
