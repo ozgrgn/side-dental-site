@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="-ml-20 shadow-xl bg-dark-300 h-96 w-2/6 flex flex-col justify-center my-auto px-10"
+  class="-ml-20 shadow-xl bg-dark-300 h-96 w-2/6 justify-center hidden lg:flex flex-col justify-center my-auto px-10"
 >
   <div class="flex flex-col pl-3 text-white">
     <span class="text-2xl font-semibold ">Working Hours</span>

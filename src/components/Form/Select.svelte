@@ -39,9 +39,7 @@
 </script>
 
 <select
-  class="{customClass
-    ? ''
-    : 'border-0'} text-sm rounded shadow focus:outline-none focus:ring  {customClass}"
+  class="border-0 text-sm rounded shadow focus:outline-none focus:ring  {customClass}"
   class:field-danger={!$validity.valid}
   class:field-success={$validity.valid}
   use:validate={value}

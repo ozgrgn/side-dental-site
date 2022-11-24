@@ -1,6 +1,5 @@
 <script>
   import Input from "$components/Form/Input.svelte";
-  import Reviews from "../../../components/Shared/Reviews.svelte";
 
   let name;
   let phone;

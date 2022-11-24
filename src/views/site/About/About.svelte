@@ -1,10 +1,6 @@
 <script>
-  import Treatments from "$components/Shared/Treatments.svelte";
-  import Reviews from "$components/Shared/Reviews.svelte";
   import ImgSlider from "$components/ImgSlider.svelte";
-  import Svg from "../../../assets/svg.json";
-  import LightButton from "$components/Buttons/LightButton.svelte";
-  import Features1 from "$components/Shared/Features1.svelte";
+
 
   let images = ["/clinic/1.jpg", "/clinic/2.jpg", "/clinic/2.jpg"];
 
@@ -24,7 +20,7 @@
       See Your Smile
     </div>
   </div>
-  <div class="grid grid-cols-3 pt-10 gap-12 h-full">
+  <div class="grid lg:grid-cols-3 pt-10 gap-12 h-full">
     <div class="flex flex-col gap-4 h-full justify-around ">
       <p>
         Distinctively re-engineer revolutionary meta-services and premium

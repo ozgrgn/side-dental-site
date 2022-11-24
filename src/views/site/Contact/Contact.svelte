@@ -8,7 +8,7 @@
   let phone;
 </script>
 
-<div class="relative bg-dark-300  h-96 w-full z-10">
+<div class="relative bg-dark-300 h-96 w-full z-10">
   <img
     class="absolute top-0 h-96 w-full opacity-10 right-0 object-cover z-1"
     src="/assets/img/contact/back2.jpg"

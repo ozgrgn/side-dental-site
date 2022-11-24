@@ -11,7 +11,7 @@
         class="text-blue-600 w-full mt-24 flex justify-center text-3xl md:text-5xl font-bold flex-row items-center"
       >
         <hr class="border-b w-full border-blue-600" />
-        <span class="flex justify-center mx-8">Biletmio</span>
+        <span class="flex justify-center mx-8">Sidedental</span>
         <hr class="border-b w-full border-blue-600" />
       </div>
     </div>

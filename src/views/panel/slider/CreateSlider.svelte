@@ -11,18 +11,13 @@
   import Select from "$components/Form/Select.svelte";
   import Switch from "$components/Switch.svelte";
 
-  let shows;
-  let events;
-
   let values = [
+    { key: "lang", customValue: null },
     { key: "title", customValue: null },
     { key: "description", customValue: null },
-    { key: "show", customValue: null },
-    { key: "event", customValue: null },
     { key: "order", customValue: null },
     { key: "isActive", customValue: null },
     { key: "backgroundBanner", customValue: null },
-    { key: "rectangleBanner", customValue: null },
     { key: "mobileBanner", customValue: null },
   ];
 
@@ -37,22 +32,8 @@
   });
 
   onMount(() => {
-    getEvents();
-    getShows();
+
   });
-
-  const getEvents = async () => {
-    let getEventsResponse = await RestService.getEvents(undefined, undefined);
-
-    events = getEventsResponse["events"];
-  };
-
-  const getShows = async () => {
-    let getShowsResponse = await RestService.getShows();
-
-    shows = getShowsResponse["shows"];
-  };
-
   const addSlider = async () => {
     let data = {};
     values.map((v) => {
@@ -91,134 +72,29 @@
       </div>
       <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
         <div class="flex flex-wrap my-4">
-          <div class="w-full lg:w-6/12 px-4">
+          <div class="w-full lg:w-3/12 px-4">
             <div class="relative w-full mb-3">
               <label
                 class="block  text-blueGray-600 text-xs font-bold mb-2"
                 for="grid-name"
               >
-                Slider başlığı
+                Dil
               </label>
-
-              <Input
-                bind:value={slider.title.value}
-                bind:isValid={slider.title.isValid}
-                placeholder={"Başlık"}
-                required={true}
-              />
+              <Select
+              bind:value={slider.lang.value}
+              values={[
+                { lang: "tr" },
+                { lang: "en"},
+                { lang: "ru" },
+              ]}
+              title={"Dil Seçin"}
+              valuesKey={"lang"}
+              valuesTitleKey={"lang"}
+              customClass={"w-full"}
+            />
             </div>
           </div>
-          <div class="w-full lg:w-6/12 px-4">
-            <div class="relative w-full mb-3">
-              <label
-                class="block  text-blueGray-600 text-xs font-bold mb-2"
-                for="grid-name"
-              >
-                Slider açıklaması
-              </label>
-
-              <Textarea
-                bind:value={slider.description.value}
-                bind:isValid={slider.description.isValid}
-                placeholder={"Açıklama"}
-                required={true}
-              />
-            </div>
-          </div>
-          <div class="w-full lg:w-6/12 px-4">
-            <div class="relative w-full mb-3">
-              <label
-                class="block  text-blueGray-600 text-xs font-bold mb-2"
-                for=""
-              >
-                Satışta etkinlik
-              </label>
-
-              {#if events}
-                <Select
-                  bind:value={slider.event.value}
-                  bind:isValid={slider.event.isValid}
-                  values={events}
-                  title={"Etkinlik seç"}
-                  valuesKey={"_id"}
-                  valuesTitleKey={"title"}
-                  customClass={"w-full border-0"}
-                />
-              {/if}
-            </div>
-          </div>
-          <div class="w-full lg:w-6/12 px-4">
-            <div class="relative w-full mb-3">
-              <label
-                class="block  text-blueGray-600 text-xs font-bold mb-2"
-                for=""
-              >
-                Satışta olmayan etkinlik
-              </label>
-
-              {#if shows}
-                <Select
-                  bind:value={slider.show.value}
-                  bind:isValid={slider.show.isValid}
-                  values={shows}
-                  title={"Etkinlik seç"}
-                  valuesKey={"_id"}
-                  valuesTitleKey={"title"}
-                  customClass={"w-full border-0"}
-                />
-              {/if}
-            </div>
-          </div>
-
-          <div class="w-full lg:w-4/12 px-4">
-            <div class="border relative w-full h-72 mb-3">
-              <label
-                class="block text-blueGray-600 text-xs font-bold mb-2"
-                for="backgroundBanner"
-              >
-                Arka plan banner
-              </label>
-              <div class="flex h-full flex-col justify-center my-2">
-                <Image
-                  bind:value={slider.backgroundBanner.value}
-                  bind:isValid={slider.backgroundBanner.isValid}
-                />
-              </div>
-            </div>
-          </div>
-          <div class="w-full lg:w-4/12 px-4">
-            <div class="border relative w-full h-72  mb-3">
-              <label
-                class="block text-blueGray-600 text-xs font-bold mb-2"
-                for="mobileBanner"
-              >
-                Ön Afiş
-              </label>
-              <div class="flex h-full flex-col justify-center my-2">
-                <Image
-                  bind:value={slider.rectangleBanner.value}
-                  bind:isValid={slider.rectangleBanner.isValid}
-                />
-              </div>
-            </div>
-          </div>
-          <div class="w-full lg:w-4/12 px-4">
-            <div class="border relative w-full h-72 mb-3">
-              <label
-                class="block text-blueGray-600 text-xs font-bold mb-2"
-                for="rectangleBanner"
-              >
-                Mobile Banner
-              </label>
-              <div class="flex h-full flex-col justify-center my-2">
-                <Image
-                  bind:value={slider.mobileBanner.value}
-                  bind:isValid={slider.mobileBanner.isValid}
-                />
-              </div>
-            </div>
-          </div>
-          <div class="w-full lg:w-6/12 px-4">
+          <div class="w-full lg:w-3/12 px-4">
             <div class="relative w-full mb-3">
               <label
                 class="block  text-blueGray-600 text-xs font-bold mb-2"
@@ -247,6 +123,76 @@
               <Switch bind:value={slider.isActive.value} />
             </div>
           </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label
+                class="block  text-blueGray-600 text-xs font-bold mb-2"
+                for="grid-name"
+              >
+                Slider Spot
+              </label>
+
+              <Input
+                bind:value={slider.title.value}
+                bind:isValid={slider.title.isValid}
+                placeholder={"Spot"}
+                required={true}
+              />
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label
+                class="block  text-blueGray-600 text-xs font-bold mb-2"
+                for="grid-name"
+              >
+                Slider Başlık
+              </label>
+
+              <Input
+                bind:value={slider.description.value}
+                bind:isValid={slider.description.isValid}
+                placeholder={"Başlık"}
+                required={true}
+              />
+            </div>
+          </div>
+   
+
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="border relative w-full h-72 mb-3">
+              <label
+                class="block text-blueGray-600 text-xs font-bold mb-2"
+                for="backgroundBanner"
+              >
+                Arka plan banner
+              </label>
+              <div class="flex h-full flex-col justify-center my-2">
+                <Image
+                  bind:value={slider.backgroundBanner.value}
+                  bind:isValid={slider.backgroundBanner.isValid}
+                />
+              </div>
+            </div>
+          </div>
+   
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="border relative w-full h-72 mb-3">
+              <label
+                class="block text-blueGray-600 text-xs font-bold mb-2"
+                for="rectangleBanner"
+              >
+                Mobile Banner
+              </label>
+              <div class="flex h-full flex-col justify-center my-2">
+                <Image
+                  bind:value={slider.mobileBanner.value}
+                  bind:isValid={slider.mobileBanner.isValid}
+                />
+              </div>
+            </div>
+          </div>
+   
         </div>
 
         <div class="flex flex-wrap">
@@ -255,7 +201,6 @@
               on:click={addSlider}
               disabled={!slider.title.isValid ||
                 !slider.description.isValid ||
-                (!slider.event.isValid && !slider.show.isValid) ||
                 !slider.order.isValid}
               class="bg-blue-600 disabled:bg-red-300 text-white active:bg-bred-400 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 "
               type="button"

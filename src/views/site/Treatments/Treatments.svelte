@@ -6,14 +6,14 @@
   let phone;
 </script>
 
-<div class="relative bg-dark-300  h-96 w-full z-10">
+<div class="relative bg-dark-300 h-96 w-full z-10">
   <img
     class="absolute top-0 h-96 w-full opacity-10 right-0 object-cover z-1"
     src="/assets/img/treatments/back1.jpg"
     alt=""
   />
   <div class="container mx-auto">
-    <div class="flex text-lg text-white/90 pt-20 ">
+    <div class="flex text-lg text-white/90 pt-20">
       Home <div class=" w-1 h-1 m-3 mt-3 bg-white/50 rounded-full" />
       Treatments
     </div>
@@ -22,7 +22,7 @@
     >
       <span class="">Treatments</span>
     </div>
-    <p class="text-white/90 w-1/2 pt-8">
+    <p class="text-white/90 w-1/2 pt-2 md:pt-8">
       Credibly innovate granular internal or organic sources whereas high
       standards in web-readiness. Energistically scale future-proof core
       competencies vis-a-vis impactful experiences. Dramatically synthesize
@@ -71,8 +71,8 @@
       <img src="/assets/img/treatments/14.jpg" alt="" />
     </div>
   </div>
-  <div class="flex flex-col ">
-    <div class="right-menu w-96 h-fit bg-light-300 rounded-md -mt-10 z-20">
+  <div class="flex flex-col">
+    <div class="right-menu w-72 lg:w-96 h-fit bg-light-300 rounded-md -mt-10 z-20">
       <div class="text-4xl text-white w-16 border-b-4 border-white m-8 h-14">
         <span class="-ml-1" />Treatments
       </div>
@@ -94,10 +94,10 @@
       </div>
     </div>
     <div
-      class="w-96 my-10 border-8 border-dark-300/10 rounded-md flex flex-col p-8"
+      class="w-72 lg:w-96 my-10 border-8 border-dark-300/10 rounded-md flex flex-col p-8"
     >
       <div
-        class="text-3xl font-medium tracking-tight text-light-300 border-b h-12"
+        class="lg:text-3xl md:text-2xl font-medium tracking-tight text-light-300 border-b h-12"
       >
         Get In Touch With Us
       </div>
@@ -112,10 +112,10 @@
             ></svg
           >
           <div class="flex flex-col justify-start pl-1 leading-[1] text-lg">
-            <span class="text-2xl tracking-tight text-light-300 leading-[1.5] "
+            <span class="lg:text-2xl md:text-xl tracking-tight text-light-300 leading-[1.5] "
               >Call us anytime</span
             >
-            <span class="text-md tracking-tight leading-[1] pb-1">
+            <span class="lg:text-lg md:text-sm tracking-tight leading-[1] pb-1">
               0242-334-2424</span
             >
           </div>
@@ -132,17 +132,17 @@
             >
           </div>
           <div class="flex flex-col justify-start pl-1 leading-[1] text-lg">
-            <span class="text-2xl tracking-tight text-light-300 leading-[1.5] "
+            <span class="md:text-xl lg:text-2xl tracking-tight text-light-300 leading-[1.5] "
               >Mail Us</span
             >
-            <span class="text-md tracking-tight leading-[1] pb-1">
+            <span class="text-sm lg:text-lg tracking-tight leading-[1] pb-1">
               info@sideshinedental.com</span
             >
           </div>
         </div>
       </div>
       <div
-        class="text-3xl font-medium tracking-tight text-light-300 border-b h-12"
+        class="lg:text-3xl md:text-2xl font-medium tracking-tight text-light-300 border-b h-12"
       >
         Book An Appointment
       </div>

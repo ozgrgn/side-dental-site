@@ -14,7 +14,7 @@ user.subscribe((value) => {
 const _lang =
   localStorage.getItem("lang") && localStorage.getItem("lang") != "null"
     ? localStorage.getItem("lang")
-    : "tr";
+    : (navigator.language || navigator.userLanguage).split("-")[0];
 
 document.documentElement.setAttribute("lang", _lang);
 export const lang = writable(_lang);

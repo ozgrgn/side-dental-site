@@ -3,6 +3,8 @@
   import { useLocation, link, navigate } from "svelte-navigator";
   import Svg from "../../../assets/svg.json";
   import Top from "./Top.svelte";
+  import LangSelect from "$components/Form/LangSelect.svelte";
+  import { lang } from "../../../services/store";
 
   const location = useLocation();
   $: {
@@ -10,7 +12,14 @@
       window.scrollTo(0, 0);
     }
   }
+  const langTrigger = (_lang) => {
+    document.documentElement.setAttribute("lang", _lang);
+    setTimeout(() => {
+      lang.set(_lang);
+      window.location.reload();
 
+    }, 1); // cause svelte is faster than browser
+  };
   let active = false;
   let drawerOpen = false;
   const changeNavStatus = () => {
@@ -23,103 +32,154 @@
   };
   let hover;
 </script>
-<div class="	">
-<Top />
-<div
-  class="sticky top-0 left-0 z-[20] text-dark-400 lg:h-16 {$location.pathname=="/"? "bg-white box-shadow shadow-lg":"bg-transparent border-t"}"
->
-  <div class="mobile lg:hidden grid h-full grid-cols-11">
-    <div class="flex items-center p-2">
-      <button
-        on:click={(event) => {
-          event.stopPropagation();
-          changeNavStatus();
-        }}
-        class="flex items-center px-2 py-2 border rounded text-black border-black "
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          fill=#bc74a5
-          viewBox="0 0 16 16"
-        >
-          {@html !active ? Svg.openedToggle : Svg.closedToggle}
-        </svg>
-      </button>
-    </div>
 
-    <div class="flex items-center justify-center h-full col-span-4">
-      <img
-        on:click={() => navigate("/")}
-        on:keydown={() => navigate("/")}
-        src="assets/img/logos/side-smile-logo.png"
-        class="h-16"
-        alt=""
+<div class="	">
+  <Top />
+  <div
+    class="sticky top-0 left-0 z-[20] text-dark-400 lg:h-16 {$location.pathname ==
+    '/'
+      ? 'bg-white box-shadow shadow-lg'
+      : $location.pathname ==
+    '/about'?"border-t  container mx-auto":""}"
+  >
+    <div class="mobile lg:hidden grid h-full grid-cols-11">
+      <div class="flex items-center p-2">
+        <button
+          on:click={(event) => {
+            event.stopPropagation();
+            changeNavStatus();
+          }}
+          class="flex items-center px-2 py-2 border rounded text-black border-black "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            fill="#bc74a5"
+            viewBox="0 0 16 16"
+          >
+            {@html !active ? Svg.openedToggle : Svg.closedToggle}
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex items-center justify-center h-full col-span-4">
+        <img
+          on:click={() => navigate("/")}
+          on:keydown={() => navigate("/")}
+          src="assets/img/logos/side-smile-logo.png"
+          class="h-16"
+          alt=""
+        />
+      </div>
+
+      <div
+        class="flex items-center gap-2 w-full justify-end pr-2 h-full col-span-6 "
       />
     </div>
 
     <div
-      class="flex items-center gap-2 w-full justify-end pr-2 h-full col-span-6 "
-    />
-  </div>
+      class="desktop hidden container lg:flex xl:container items-center flex-row text-dark-400 h-full w-full mx-auto z-[20] {$location.pathname ==
+      '/'
+        ? 'bg-white'
+        : 'bg-transparent'} "
+    >
+      <div
+        class="hidden items-center lg:flex basis-8/12 gap-8 h-full relative {$location.pathname ==
+        '/'
+          ? 'bg-white'
+          : 'bg-transparent'} "
+      >
+        <AItem active={$location.pathname == "/"} path="/">Ana Sayfa</AItem>
+        <AItem active={$location.pathname == "/about"} path="/about"
+          >Hakkımızda</AItem
+        >
+        <AItem active={$location.pathname == "/treatments"} path="/treatments"
+          >Tedaviler</AItem
+        >
+        <AItem active={$location.pathname == "/contact"} path="/contact"
+          >Contact</AItem
+        >
+      </div>
 
-  <div
-    class="desktop hidden container lg:flex xl:container items-center flex-row text-dark-400 h-full w-full mx-auto z-[20] {$location.pathname=="/"? "bg-white":"bg-transparent"} "
-  >
-    <div
-      class="hidden items-center lg:flex basis-8/12 gap-8 h-full relative {$location.pathname=="/"? "bg-white":"bg-transparent"} "
-    >
-      <AItem active={$location.pathname == "/"} path="/">Ana Sayfa</AItem>
-      <AItem active={$location.pathname == "/about"} path="/about"
-        >Hakkımızda</AItem
+      <div
+        class="hidden lg:flex items-center justify-end basis-4/12 gap-4 relative h-full pr-4 border-r {$location.pathname ==
+        '/'
+          ? 'bg-white'
+          : 'bg-transparent'}"
       >
-      <AItem active={$location.pathname == "/treatments"} path="/treatments"
-        >Tedaviler</AItem
-      >
-      <AItem active={$location.pathname == "/contact"} path="/contact"
-        >Contact</AItem
-      >
-    </div>
-
-    <div
-      class="hidden lg:flex items-center justify-end basis-4/12 gap-4 relative h-full {$location.pathname=="/"? "bg-white":"bg-transparent"}"
-    >
-      <svg
-        class="h-5"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill=#bc74a5
-      >
-        {@html Svg.facebook}
-      </svg>
-      <svg
-        class="h-5"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-        fill=#bc74a5
-      >
-        {@html Svg.instagram}
-      </svg>
-      <svg
-        class="h-6"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="#bc74a5"
-      >
-        {@html Svg.youtube}
-      </svg>
-      <svg
-      class="h-5"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill=#bc74a5
-    >
-      {@html Svg.whatsapp}
-    </svg>
+        <svg
+          class="h-5"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="#bc74a5"
+        >
+          {@html Svg.facebook}
+        </svg>
+        <svg
+          class="h-5"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#bc74a5"
+        >
+          {@html Svg.instagram}
+        </svg>
+        <svg
+          class="h-6"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="#bc74a5"
+        >
+          {@html Svg.youtube}
+        </svg>
+        <svg
+          class="h-5 "
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="#bc74a5"
+        >
+          {@html Svg.whatsapp}
+        </svg>
+      </div>
+      <div class="pl-2">
+        <form class=" sm:max-w-xs">
+          <fieldset class="w-full">
+            <label for="language" class="sr-only">Language</label>
+            <div class="relative">
+              <LangSelect
+                value={$lang}
+                change={(value) => langTrigger(value)}
+                values={[{ lang: "en"}, {lang: "tr"}, {lang: "ru"} ]}
+                title="sdf"
+                valuesKey={"lang"}
+                valuesTitleKey={"lang"}
+                required={false}
+                customClass={"uppercase appearance-none w-full  shadow-none bg-white border border-transparent rounded-md pl-3 text-light-300 focus:outline-none focus:ring-white focus:border-white sm:text-sm lg:text-lg"}
+              />
+              <div
+                class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center"
+              >
+                <!-- Heroicon name: solid/chevron-down -->
+                <svg
+                  class="h-4 w-4 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <div

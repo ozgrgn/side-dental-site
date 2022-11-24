@@ -37,7 +37,7 @@
   <select
     class="{customClass
       ? ''
-      : 'border-0'} text-sm rounded shadow ease-linear focus:ring-0  transition-all duration-150 {customClass}"
+      : 'border-0'} rounded shadow ease-linear focus:ring-0  transition-all duration-150 {customClass}"
     class:field-danger={!$validity.valid}
     class:field-success={$validity.valid}
     use:validate={value}

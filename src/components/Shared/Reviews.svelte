@@ -194,6 +194,14 @@
             type: "loop",
             pagination: true,
             perPage: 3,
+            breakpoints: {
+              1028: {
+                perPage: 2,
+              },
+              640: {
+                perPage: 1,
+              },
+            },
             classes: {
               pagination: "splide__pagination main-slider-pagination",
               page: "splide__pagination__page main-slider-page",
@@ -446,11 +454,9 @@
   }
 
   :global(.testimonials .main-slider-page) {
- 
-    background-color:#f2f2f2!important;
+    background-color: #f2f2f2 !important;
   }
-  :global(.testimonials  .main-slider-page.is-active) {
-
+  :global(.testimonials .main-slider-page.is-active) {
     background-color: #bc74a5 !important;
   }
 </style>

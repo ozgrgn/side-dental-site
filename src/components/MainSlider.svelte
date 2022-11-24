@@ -1,7 +1,8 @@
 <script>
   import { Splide, SplideSlide } from "@splidejs/svelte-splide";
   import "@splidejs/svelte-splide/css";
-
+export let sliders
+console.log(sliders,"sfsf")
 </script>
 
 <Splide
@@ -11,14 +12,16 @@
     pagination: false,
   }}
 >
+{#each sliders as slider}
   <SplideSlide>
+
     <img
-      class="h-[calc(100vh-160px)] md:h-100 w-auto object-cover "
-      src="/assets/bg-1.jpg"
+      class="h-[calc(100vh-160px)] md:h-100 w-auto object-cover  "
+      src={slider.backgroundBanner}
       alt=""
     />
+
   </SplideSlide>
-  <SplideSlide>
-    <img src="assets/bg-1.jpg" alt="" />
-  </SplideSlide>
+
+  {/each}
 </Splide>

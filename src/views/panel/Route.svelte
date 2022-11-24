@@ -30,42 +30,41 @@
   import UpdateVenue from "./venue/UpdateVenue.svelte";
   import CreateVenue from "./venue/CreateVenue.svelte";
   import Venues from "./venue/Venues.svelte";
-  import UpdateBoxOffice from "./boxOffice/UpdateBoxOffice.svelte";
-  import CreateBoxOffice from "./boxOffice/CreateBoxOffice.svelte";
-  import BoxOffices from "./boxOffice/BoxOffices.svelte";
   import Levels from "./level/Levels.svelte";
   import CreateLevel from "./level/CreateLevel.svelte";
   import UpdateLevel from "./level/UpdateLevel.svelte";
   import Users from "./user/Users.svelte";
   import SeastAndPrices from "./event/SeastAndPrices.svelte";
 
-  let userAuthSubscription = user.subscribe(async (auth) => {
-    if (!auth) {
-      navigate("/auth/login");
-      SOCKET.stopConnection();
-      if (window.location.pathname.indexOf("admin") != -1) {
-        navigate("/auth/login");
-      }
-    } else {
-      let response = await RestService.verifyToken();
-      if (response && response.status) {
-        SOCKET.startConnection();
-        if (
-          window.location.pathname == "/auth/login" ||
-          window.location.pathname == "/panel" ||
+
+
+  // let userAuthSubscription = user.subscribe(async (auth) => {
+  //   if (!auth) {
+  //     navigate("/auth/login");
+  //     SOCKET.stopConnection();
+  //     if (window.location.pathname.indexOf("admin") != -1) {
+  //       navigate("/auth/login");
+  //     }
+  //   } else {
+  //     let response = await RestService.verifyToken();
+  //     if (response && response.status) {
+  //       SOCKET.startConnection();
+  //       if (
+  //         window.location.pathname == "/auth/login" ||
+  //         window.location.pathname == "/panel" ||
         
-          window.location.pathname == "/panel/"
-        ) {
-          navigate("/panel/dashboard");
-        }
-      } else {
-        user.set(null);
-      }
-    }
-  });
-  onDestroy(() => {
-    userAuthSubscription;
-  });
+  //         window.location.pathname == "/panel/"
+  //       ) {
+  //         navigate("/panel/dashboard");
+  //       }
+  //     } else {
+  //       user.set(null);
+  //     }
+  //   }
+  // });
+  // onDestroy(() => {
+  //   userAuthSubscription;
+  // });
 
 </script>
 
@@ -158,16 +157,6 @@
 
         <Route path="venues" component={Venues} />
 
-        <!-- BoxOffice -->
-
-        <Route
-          path="update-boxOffice/:boxOfficeId"
-          component={UpdateBoxOffice}
-        />
-
-        <Route path="create-boxOffice" component={CreateBoxOffice} />
-
-        <Route path="boxOffices" component={BoxOffices} />
 
         <!-- Level -->
 

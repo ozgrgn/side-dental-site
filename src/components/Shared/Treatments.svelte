@@ -13,9 +13,9 @@ export let customClass
       </h3>
     </div>
     <div class="flex flex-col justify-center">
-    <LightButton customClass="h-12 ">All Treatments</LightButton></div>
+    <LightButton customClass="h-12">All Treatments</LightButton></div>
   </div>
-<div class="py-10 grid grid-cols-4 gap-6">
+<div class="py-10 grid grid-cols-4 lg:gap-6 gap-2">
 
 
 <Card>Dental Implant

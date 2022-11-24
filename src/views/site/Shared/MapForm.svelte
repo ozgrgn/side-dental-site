@@ -6,7 +6,7 @@
 </script>
 
 <div
-  class="-ml-20 shadow-2xl bg-white h-[28rem] w-2/6 flex flex-col justify-center my-auto px-10"
+  class="lg:-ml-20 shadow-2xl bg-white h-[28rem] lg:w-2/6 m-4 flex flex-col justify-center lg:my-auto px-10"
 >
   <div class="flex flex-col pl-3 text-white">
     <h3

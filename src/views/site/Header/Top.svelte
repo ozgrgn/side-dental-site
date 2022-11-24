@@ -16,7 +16,7 @@
     alt=""
   />
   <div
-    class="container hidden md:flex md:border-b justify-between mx-auto bg-transparent z-20 "
+    class="container hidden lg:flex md:border-b justify-between mx-auto bg-transparent z-20 "
   >
     <a use:link href={"/"} class="z-10 ">
       <img src="assets/img/logos/side-smile-logo.png" class="h-24" alt="" />

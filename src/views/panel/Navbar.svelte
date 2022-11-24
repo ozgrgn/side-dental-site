@@ -31,7 +31,7 @@
         <a
           href="/panel/dashboard"
           use:link
-          class="md:hidden text-white font-bold">Biletmio</a
+          class="md:hidden text-white font-bold">Side-dental</a
         >
         <button
           on:click={() => (navbarOpen = !navbarOpen)}
@@ -54,7 +54,7 @@
             <div
               class="flex flex-col md:flex-row text-white font-bold mb-4 md:mb-0 w-3/12"
             >
-              Biletmio Panel
+              Side-dental Panel
             </div>
             <div
               class="flex flex-col md:flex-row flex-wrap gap-2 items-center justify-center lg:px-44"

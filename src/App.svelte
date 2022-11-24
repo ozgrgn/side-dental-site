@@ -12,15 +12,44 @@
   import RestService from "./services/rest";
   import moment from "moment-timezone";
   moment.tz.setDefault("Europe/Istanbul");
-
-
+  if (
+          window.location.pathname == "/auth/login" ||
+          window.location.pathname == "/panel" ||
+          window.location.pathname == "/panel/"
+        ) {
+  let userAuthSubscription = user.subscribe(async (auth) => {
+    if (!auth) {
+      navigate("/auth/login");
+      SOCKET.stopConnection();
+      if (window.location.pathname.indexOf("admin") != -1) {
+        navigate("/auth/login");
+      }
+    } else {
+      let response = await RestService.verifyToken();
+      if (response && response.status) {
+        SOCKET.startConnection();
+        if (
+          window.location.pathname == "/auth/login" ||
+          window.location.pathname == "/panel" ||
+          window.location.pathname == "/" ||
+          window.location.pathname == "/panel/"
+        ) {
+          navigate("/panel/dashboard");
+        }
+      } else {
+        user.set(null);
+      }
+    }}
+  )};
+  onDestroy(() => {
+    userAuthSubscription;
+  });
 
   let browserLang = navigator.language || navigator.userLanguage;
-
-  lang.set(browserLang.split("-")[0] || "tr");
+  if (!$lang) lang.set(browserLang.split("-")[0]);
 </script>
 
-<Modal show={$modal}/>
+<Modal show={$modal} />
 
 <SvelteToast />
 
@@ -29,5 +58,5 @@
 
   <Route path="panel/*" component={AdminRoute} />
   <Route path="/*" component={SiteRoute} />
-  <Route path="" component={AdminRoute} />
+  <Route path="" component={SiteRoute} />
 </Router>

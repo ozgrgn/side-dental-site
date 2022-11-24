@@ -13,13 +13,16 @@ const uploadImage = (file) => {
 };
 
 // Sliders
-const getSliders = (limit, skip) => {
+const getSliders = (limit, skip,lang) => {
   let data = {};
   if (limit) {
     data.limit = limit;
   }
   if (skip) {
     data.skip = skip;
+  }
+  if (lang) {
+    data.lang = lang;
   }
   return Http.get(`${ENV.API_URL}/slider`, { ...data });
 };

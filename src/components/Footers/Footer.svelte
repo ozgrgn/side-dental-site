@@ -17,10 +17,10 @@
   <footer class="relative bg-dark-300" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-      <div class="pb-8 xl:grid xl:grid-cols-6 xl:gap-2">
+      <div class="pb-8 md:grid xl:grid-cols-6 xl:gap-2">
         <div class="md:grid md:grid-cols-2 gap-16 xl:col-span-4">
           <div class="first">
-            <div class="md:grid md:grid-cols-1 md:gap-8">
+            <div class="md:grid-cols-1 md:gap-8">
               <div>
                 <h3
                   class="text-sm font-semibold text-white tracking-wider uppercase"
@@ -39,14 +39,14 @@
           <div class="mt-10 md:mt-0 md:grid md:grid-cols-1 md:gap-8">
             <div>
               <h3
-                class="text-sm font-semibold text-white tracking-wider uppercase"
+                class="text-sm font-semibold text-white tracking-wider uppercase "
               >
               Tedaviler
               </h3>
               <div class="grid-rows-1">
                 <div class="grid grid-cols-2 ">
                   <div class="">
-                    <ul class="mt-4 space-y-4">
+                    <ul class="mt-4 space-y-4 px-2">
                       {#each Array(4) as treatment,i}
                         <li>
                           <a
@@ -60,7 +60,7 @@
                       {/each}
                     </ul>
                   </div>
-                  <ul class="mt-4 space-y-4">
+                  <ul class="mt-4 space-y-4 px-2">
                     {#each Array(4) as treatment,i}
                       <li>
                         <a
@@ -87,8 +87,8 @@
               İletişim
               </h3>
   
-              <div class="">
-                <p class=" pt-5 text-md tracking-tight text-gray-200">
+              <div class="px-2">
+                <p class=" pt-5 text-md tracking-tight text-gray-400">
                   <a href="tel:e23234234">
                   +535 553 53 54
                   </a>
@@ -121,7 +121,7 @@
                   valuesKey={"lang"}
                   valuesTitleKey={"lang"}
                   required={false}
-                  customClass={"uppercase appearance-none w-full bg-none bg-gray-700 border border-transparent rounded-md block py-2 pl-3 pr-10 text-base text-white focus:outline-none focus:ring-white focus:border-white sm:text-sm"}
+                  customClass={"uppercase appearance-none w-full bg-none bg-gray-600 border border-transparent rounded-md block py-2 pl-3 pr-10 text-base text-white focus:outline-none focus:ring-white focus:border-white sm:text-sm"}
                 />
                 <div
                   class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center"
