@@ -1,8 +1,12 @@
 <script>
+  import Quill from "quill";
+  import { onMount } from "svelte";
+
   export let incomingValue;
   export let value;
+  export let placeholder;
   let editor;
-
+  $: console.log(incomingValue)
   let toolbarOptions = [
     [{ header: 1 }, { header: 2 }, "blockquote", "link", "image", "video"],
     ["bold", "italic", "underline", "strike"],
@@ -11,26 +15,28 @@
     ["clean"],
   ];
 
-  setTimeout(async () => {
+  onMount(() => {
     let quill = new Quill(editor, {
       modules: {
         toolbar: toolbarOptions,
-        imageResize: {},
       },
       theme: "snow",
-      placeholder: "Write your story...",
+      placeholder,
     });
 
-    // quill.on("text-change", function (delta, oldDelta, source) {
-    //   value = document.getElementsByClassName("ql-editor")[0].innerHTML;
-    // });
-    document.querySelector(".ql-editor").innerHTML = incomingValue;
-  }, 400);
+    quill.on("text-change", function (delta, oldDelta, source) {
+      value = document.getElementsByClassName("ql-editor")[0].innerHTML;
+    });
+    if (incomingValue) {
+   
+      document.querySelector(".ql-editor").innerHTML = incomingValue;
+    }
+    
+  });
 </script>
 
-<div
-  class="editor"
-  style="min-height: 30rem;"
-  bind:this={editor}
-  on:text-change={(e) => (value = e.detail.html)}
-/>
+<svelte:head>
+  <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+</svelte:head>
+
+<div class="editor" style="min-height: 30rem;" bind:this={editor} />

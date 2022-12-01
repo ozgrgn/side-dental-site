@@ -5,11 +5,10 @@
   export let titleClass;
   export let iconColor;
 </script>
-
-<div class="grid grid-cols-4 gap-2  pt-6">
+<div class="hidden md:grid md:grid-cols-4 gap-2 pt-6">
   <div class="col-span-1">
     <svg
-      class="h-fit"
+      class="h-fit "
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 96 96"
       fill={iconColor}
@@ -18,7 +17,7 @@
     </svg>
   </div>
   <div class="col-span-3 flex flex-col ">
-    <h2 class="text-xl {titleClass} ">{title}</h2>
+    <h2 class="text-xl md:text-lg  {titleClass} ">{title}</h2>
     <p class="text-sm w-48 font-thin pt-1">
         {description}
     </p>

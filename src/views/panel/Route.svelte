@@ -2,41 +2,40 @@
   import FooterAdmin from "$components/Footers/FooterAdmin.svelte";
   import { Route, Router } from "svelte-navigator";
   import AdminNavbar from "./Navbar.svelte";
-  import Categories from "./category/Categories.svelte";
-  import CreateCategory from "./category/CreateCategory.svelte";
-  import UpdateCategory from "./category/UpdateCategory.svelte";
+
   import Dashboard from "./Dashboard.svelte";
-  import CreateEvent from "./event/CreateEvent.svelte";
-  import Events from "./event/Events.svelte";
-  import UpdateEvent from "./event/UpdateEvent.svelte";
-  import CreateSeatPlan from "./seatPlan/CreateSeatPlan.svelte";
-  import SeatPlans from "./seatPlan/SeatPlans.svelte";
-  import UpdateSeatPlan from "./seatPlan/UpdateSeatPlan.svelte";
-  import CreateShow from "./show/CreateShow.svelte";
-  import Shows from "./show/Shows.svelte";
-  import UpdateShow from "./show/UpdateShow.svelte";
+
   import CreateSlider from "./slider/CreateSlider.svelte";
   import Sliders from "./slider/Sliders.svelte";
   import UpdateSlider from "./slider/UpdateSlider.svelte";
-  import CreateTag from "./tag/CreateTag.svelte";
-  import Tags from "./tag/Tags.svelte";
-  import UpdateTag from "./tag/UpdateTag.svelte";
+
   import UpdateAdmin from "./admin/UpdateAdmin.svelte";
   import CreateAdmin from "./admin/CreateAdmin.svelte";
   import Admins from "./admin/Admins.svelte";
-  import UpdatePermissionGroup from "./permissionGroup/UpdatePermissionGroup.svelte";
-  import CreatePermissionGroup from "./permissionGroup/CreatePermissionGroup.svelte";
-  import PermissionGroups from "./permissionGroup/PermissionGroups.svelte";
-  import UpdateVenue from "./venue/UpdateVenue.svelte";
-  import CreateVenue from "./venue/CreateVenue.svelte";
-  import Venues from "./venue/Venues.svelte";
-  import Levels from "./level/Levels.svelte";
-  import CreateLevel from "./level/CreateLevel.svelte";
-  import UpdateLevel from "./level/UpdateLevel.svelte";
-  import Users from "./user/Users.svelte";
-  import SeastAndPrices from "./event/SeastAndPrices.svelte";
-
-
+  import UpdateLang from "./lang/UpdateLang.svelte";
+  import CreateLang from "./lang/CreateLang.svelte";
+  import Langs from "./lang/Langs.svelte";
+  import UpdateHome from "./homePage/UpdateHome.svelte";
+  import CreateHome from "./homePage/CreateHome.svelte";
+  import Homes from "./homePage/Homes.svelte";
+  import UpdateAbout from "./about/UpdateAbout.svelte";
+  import CreateAbout from "./about/CreateAbout.svelte";
+  import Abouts from "./about/Abouts.svelte";
+  import UpdateTreatment from "./treatment/UpdateTreatment.svelte";
+  import CreateTreatment from "./treatment/CreateTreatment.svelte";
+  import Treatments from "./treatment/Treatments.svelte";
+  import UpdateTreatmentPage from "./treatmentPage/UpdateTreatmentPage.svelte";
+  import CreateTreatmentPage from "./treatmentPage/CreateTreatmentPage.svelte";
+  import TreatmentPages from "./treatmentPage/TreatmentPages.svelte";
+  import UpdateContact from "./contact/UpdateContact.svelte";
+  import CreateContact from "./contact/CreateContact.svelte";
+  import Contacts from "./contact/Contacts.svelte";
+  import UpdateGeneral from "./general/UpdateGeneral.svelte";
+  import CreateGeneral from "./general/CreateGeneral.svelte";
+  import Generals from "./general/Generals.svelte";
+  import UpdateTranslate from "./translate/UpdateTranslate.svelte";
+  import CreateTranslate from "./translate/CreateTranslate.svelte";
+  import Translates from "./translate/Translates.svelte";
 
   // let userAuthSubscription = user.subscribe(async (auth) => {
   //   if (!auth) {
@@ -52,7 +51,7 @@
   //       if (
   //         window.location.pathname == "/auth/login" ||
   //         window.location.pathname == "/panel" ||
-        
+
   //         window.location.pathname == "/panel/"
   //       ) {
   //         navigate("/panel/dashboard");
@@ -65,7 +64,6 @@
   // onDestroy(() => {
   //   userAuthSubscription;
   // });
-
 </script>
 
 <div>
@@ -81,44 +79,12 @@
         <!-- Dashboard -->
         <Route path="dashboard" component={Dashboard} />
 
-        <!-- PermissionGroup -->
-        <Route
-          path="update-permissionGroup/:permissionGroupId"
-          component={UpdatePermissionGroup}
-        />
-
-        <Route
-          path="create-permissionGroup"
-          component={CreatePermissionGroup}
-        />
-
-        <Route path="permissionGroups" component={PermissionGroups} />
-
         <!-- Admin -->
         <Route path="update-admin/:adminId" component={UpdateAdmin} />
 
         <Route path="create-admin" component={CreateAdmin} />
 
         <Route path="admins" component={Admins} />
-
-        <!-- Show -->
-        <Route path="update-show/:showId" component={UpdateShow} />
-
-        <Route path="create-show" component={CreateShow} />
-
-        <Route path="shows" component={Shows} />
-
-        <!-- Event -->
-        <Route path="update-event/:eventId" component={UpdateEvent} />
-
-        <Route
-          path="event/seatsAndPrices/:eventId"
-          component={SeastAndPrices}
-        />
-
-        <Route path="create-event" component={CreateEvent} />
-
-        <Route path="events" component={Events} />
 
         <!-- Slider -->
         <Route path="update-slider/:sliderId" component={UpdateSlider} />
@@ -127,48 +93,63 @@
 
         <Route path="sliders" component={Sliders} />
 
-        <!-- Tags -->
-        <Route path="update-tag/:tagId" component={UpdateTag} />
+        <!-- Ana Sayfa -->
+        <Route path="update-home/:homeId" component={UpdateHome} />
 
-        <Route path="create-tag" component={CreateTag} />
+        <Route path="create-home" component={CreateHome} />
 
-        <Route path="tags" component={Tags} />
+        <Route path="homes" component={Homes} />
+        <!-- Hakkımızda -->
+        <Route path="update-about/:aboutId" component={UpdateAbout} />
 
-        <!-- Categories -->
-        <Route path="update-category/:categoryId" component={UpdateCategory} />
+        <Route path="create-about" component={CreateAbout} />
 
-        <Route path="create-category" component={CreateCategory} />
+        <Route path="abouts" component={Abouts} />
+      
+        
+        <!-- Tedavi-Sayfası -->
+        <Route
+          path="update-treatmentpage/:treatments_pageId"
+          component={UpdateTreatmentPage}
+        />
 
-        <Route path="categories" component={Categories} />
+        <Route path="create-treatmentpage" component={CreateTreatmentPage} />
 
-        <!-- SeatPlan -->
+        <Route path="treatmentpages" component={TreatmentPages} />
+        <!-- İletişim -->
+        <Route path="update-contact/:contactId" component={UpdateContact} />
 
-        <Route path="update-seatPlan/:seatPlanId" component={UpdateSeatPlan} />
+        <Route path="create-contact" component={CreateContact} />
 
-        <Route path="create-seatPlan" component={CreateSeatPlan} />
+        <Route path="contacts" component={Contacts} />
+        <!-- Genel Bilgiler -->
+        <Route path="update-general/:generalId" component={UpdateGeneral} />
 
-        <Route path="seatPlans" component={SeatPlans} />
+        <Route path="create-general" component={CreateGeneral} />
 
-        <!-- Venue -->
+        <Route path="generals" component={Generals} />
+        <!-- Çeviriler -->
+        <Route path="update-translate/:translateId" component={UpdateTranslate} />
 
-        <Route path="update-venue/:venueId" component={UpdateVenue} />
+        <Route path="create-translate" component={CreateTranslate} />
 
-        <Route path="create-venue" component={CreateVenue} />
+        <Route path="translates" component={Translates} />
+        <!-- Diller -->
+        <Route path="update-lang/:langId" component={UpdateLang} />
 
-        <Route path="venues" component={Venues} />
+        <Route path="create-lang" component={CreateLang} />
 
+        <Route path="langs" component={Langs} />
 
-        <!-- Level -->
+        <!-- Tedaviler -->
+        <Route
+          path="update-treatment/:treatmentId"
+          component={UpdateTreatment}
+        />
 
-        <Route path="update-level/:levelId" component={UpdateLevel} />
+        <Route path="create-treatment" component={CreateTreatment} />
 
-        <Route path="create-level" component={CreateLevel} />
-
-        <Route path="levels" component={Levels} />
-
-        <!-- User -->
-
-        <Route path="users" component={Users} />
+        <Route path="treatments" component={Treatments} />
       </Router>
 
       <FooterAdmin />

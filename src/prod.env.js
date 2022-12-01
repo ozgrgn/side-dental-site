@@ -1,4 +1,4 @@
 const env = {
-    API_URL: "https://stage-api.side-dental.com",
+    API_URL: "https://side-dental.herokuapp.com"
 };
 export default env

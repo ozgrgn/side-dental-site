@@ -14,13 +14,16 @@ console.log(sliders,"sfsf")
 >
 {#each sliders as slider}
   <SplideSlide>
-
+<div class="relative">
+  
     <img
       class="h-[calc(100vh-160px)] md:h-100 w-auto object-cover  "
       src={slider.backgroundBanner}
       alt=""
     />
+    <div class="flex lg:hidden absolute top-0 w-full h-full bg-white/30"></div>
 
+  </div>
   </SplideSlide>
 
   {/each}

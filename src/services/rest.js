@@ -13,7 +13,7 @@ const uploadImage = (file) => {
 };
 
 // Sliders
-const getSliders = (limit, skip,lang) => {
+const getSliders = (limit, skip, lang) => {
   let data = {};
   if (limit) {
     data.limit = limit;
@@ -44,32 +44,8 @@ const deleteSlider = (sliderId) => {
   return Http.delete(`${ENV.API_URL}/slider/${sliderId}`);
 };
 
-// Events
-const getEvents = (limit, skip, customQuery = {}) => {
-  let data = { customQuery: JSON.stringify(customQuery) };
-  if (limit) {
-    data.limit = limit;
-  }
-  if (skip) {
-    data.skip = skip;
-  }
-  return Http.get(`${ENV.API_URL}/event`, { ...data });
-};
-const getEventsWithDetailedFilters = (
-  isActive,
-  tag,
-  startDate,
-  endDate,  
-  show,
-  limit,
-  skip,
-  _id,
-  venue,
-  category,
-  boxOffice,
-  organizer,
-
-) => {
+// Langs
+const getLangs = (limit, skip) => {
   let data = {};
   if (limit) {
     data.limit = limit;
@@ -77,59 +53,132 @@ const getEventsWithDetailedFilters = (
   if (skip) {
     data.skip = skip;
   }
-  if (_id) {
-    data._id = _id;
+  return Http.get(`${ENV.API_URL}/lang`, { ...data });
+};
+const addLang = (data) => {
+  return Http.post(`${ENV.API_URL}/lang`, data);
+};
+
+const updateLang = (langId, data) => {
+  return Http.put(`${ENV.API_URL}/lang/${langId}`, {
+    lang: data,
+  });
+};
+
+const getLang = (langId) => {
+  return Http.get(`${ENV.API_URL}/lang/${langId}`);
+};
+
+const deleteLang = (langId) => {
+  return Http.delete(`${ENV.API_URL}/lang/${langId}`);
+};
+
+// Homes
+const getHomes = (limit, skip, lang) => {
+  let data = {};
+  if (limit) {
+    data.limit = limit;
   }
-  if (venue) {
-    data.venue = venue;
+  if (skip) {
+    data.skip = skip;
   }
-  if (category) {
-    data.category = category;
+  if (lang) {
+    data.lang = lang;
   }
-  if (tag) {
-    data.tag = tag;
+  return Http.get(`${ENV.API_URL}/home`, { ...data });
+};
+const addHome = (data) => {
+  return Http.post(`${ENV.API_URL}/home`, data);
+};
+
+const updateHome = (homeId, data) => {
+  return Http.put(`${ENV.API_URL}/home/${homeId}`, {
+    home: data,
+  });
+};
+
+const getHome = (homeId) => {
+  return Http.get(`${ENV.API_URL}/home/${homeId}`);
+};
+
+const deleteHome = (homeId) => {
+  return Http.delete(`${ENV.API_URL}/home/${homeId}`);
+};
+
+// Abouts
+const getAbouts = (limit, skip, lang) => {
+  let data = {};
+  if (limit) {
+    data.limit = limit;
   }
-  if (boxOffice) {
-    data.boxOffice = boxOffice;
+  if (skip) {
+    data.skip = skip;
   }
-  if (startDate) {
-    data.startDate = startDate;
+  if (lang) {
+    data.lang = lang;
   }
-  if (endDate) {
-    data.endDate = endDate;
+  return Http.get(`${ENV.API_URL}/about`, { ...data });
+};
+const addAbout = (data) => {
+  return Http.post(`${ENV.API_URL}/about`, data);
+};
+
+const updateAbout = (aboutId, data) => {
+  return Http.put(`${ENV.API_URL}/about/${aboutId}`, {
+    about: data,
+  });
+};
+
+const getAbout = (aboutId) => {
+  return Http.get(`${ENV.API_URL}/about/${aboutId}`);
+};
+
+const deleteAbout = (aboutId) => {
+  return Http.delete(`${ENV.API_URL}/about/${aboutId}`);
+};
+
+// Treatments
+const getTreatments = (limit, skip, lang, isActive, hp) => {
+  let data = {};
+  if (limit) {
+    data.limit = limit;
   }
-  if (organizer) {
-    data.organizer = organizer;
+  if (skip) {
+    data.skip = skip;
+  }
+  if (lang) {
+    data.lang = lang;
   }
   if (isActive) {
     data.isActive = isActive;
   }
-  if (show) {
-    data.show = show;
+  if (hp) {
+    data.hp = hp;
   }
-  console.log(data, "datatata");
-  return Http.get(`${ENV.API_URL}/event/detailed`, { ...data });
+  return Http.get(`${ENV.API_URL}/treatment`, { ...data });
 };
-const addEvent = (data) => {
-  return Http.post(`${ENV.API_URL}/event`, data);
+const addTreatment = (data) => {
+  return Http.post(`${ENV.API_URL}/treatment`, data);
 };
 
-const updateEvent = (eventId, data) => {
-  return Http.put(`${ENV.API_URL}/event/${eventId}`, {
-    event: data,
+const updateTreatment = (treatmentId, data) => {
+  return Http.put(`${ENV.API_URL}/treatment/${treatmentId}`, {
+    treatment: data,
   });
 };
 
-const getEvent = (eventId) => {
-  return Http.get(`${ENV.API_URL}/event/${eventId}`);
+const getTreatment = (treatmentId) => {
+  return Http.get(`${ENV.API_URL}/treatment/${treatmentId}`);
+};
+const getTreatmentViaPerma = (perma) => {
+  return Http.get(`${ENV.API_URL}/treatment/perma/${perma}`);
 };
 
-const deleteEvent = (eventId) => {
-  return Http.delete(`${ENV.API_URL}/event/${eventId}`);
+const deleteTreatment = (treatmentId) => {
+  return Http.delete(`${ENV.API_URL}/treatment/${treatmentId}`);
 };
-
-// Shows
-const getShows = (limit, skip) => {
+// TreatmentPages
+const getTreatmentPages = (limit, skip, lang) => {
   let data = {};
   if (limit) {
     data.limit = limit;
@@ -137,62 +186,30 @@ const getShows = (limit, skip) => {
   if (skip) {
     data.skip = skip;
   }
-  return Http.get(`${ENV.API_URL}/show`, { ...data });
-};
-const addShow = (data) => {
-  return Http.post(`${ENV.API_URL}/show`, data);
-};
-
-const updateShow = (showId, data) => {
-  return Http.put(`${ENV.API_URL}/show/${showId}`, {
-    show: data,
-  });
-};
-
-const getShow = (showId) => {
-  return Http.get(`${ENV.API_URL}/show/${showId}`);
-};
-
-const deleteShow = (showId) => {
-  return Http.delete(`${ENV.API_URL}/show/${showId}`);
-};
-
-// Tickets
-const getTickets = (limit, skip, customQuery = {}) => {
-  let data = { customQuery: JSON.stringify(customQuery) };
-
-  if (limit) {
-    data.limit = limit;
+  if (lang) {
+    data.lang = lang;
   }
-  if (skip) {
-    data.skip = skip;
-  }
-  return Http.get(`${ENV.API_URL}/ticket`, { ...data });
+  return Http.get(`${ENV.API_URL}/treatmentpage`, { ...data });
+};
+const addTreatmentPage = (data) => {
+  return Http.post(`${ENV.API_URL}/treatmentpage`, data);
 };
 
-const getTicketsByEventAndBlock = (eventId, blockId) => {
-  return Http.get(`${ENV.API_URL}/ticket/byEventAndBlock`, {
-    eventId,
-    blockId,
+const updateTreatmentPage = (treatmentPageId, data) => {
+  return Http.put(`${ENV.API_URL}/treatmentpage/${treatmentPageId}`, {
+    treatmentPage: data,
   });
 };
 
-const updateTicket = (ticketId, data) => {
-  return Http.put(`${ENV.API_URL}/ticket/${ticketId}`, {
-    ticket: data,
-  });
+const getTreatmentPage = (treatmentPageId) => {
+  return Http.get(`${ENV.API_URL}/treatmentPage/${treatmentPageId}`);
 };
 
-const getTicket = (ticketId) => {
-  return Http.get(`${ENV.API_URL}/ticket/${ticketId}`);
+const deleteTreatmentPage = (treatmentPageId) => {
+  return Http.delete(`${ENV.API_URL}/treatmentPage/${treatmentPageId}`);
 };
-
-const deleteTicket = (ticketId) => {
-  return Http.delete(`${ENV.API_URL}/ticket/${ticketId}`);
-};
-
-// Users
-const getUsers = (limit, skip) => {
+// Contacts
+const getContacts = (limit, skip, lang) => {
   let data = {};
   if (limit) {
     data.limit = limit;
@@ -200,11 +217,29 @@ const getUsers = (limit, skip) => {
   if (skip) {
     data.skip = skip;
   }
-  return Http.get(`${ENV.API_URL}/user`, { ...data });
+  if (lang) {
+    data.lang = lang;
+  }
+  return Http.get(`${ENV.API_URL}/contact`, { ...data });
+};
+const addContact = (data) => {
+  return Http.post(`${ENV.API_URL}/contact`, data);
 };
 
-// SeatPlans
-const getSeatPlans = (limit, skip) => {
+const updateContact = (contactId, data) => {
+  return Http.put(`${ENV.API_URL}/contact/${contactId}`, {
+    contact: data,
+  });
+};
+
+const getContact = (contactId) => {
+  return Http.get(`${ENV.API_URL}/contact/${contactId}`);
+};
+
+const deleteContact = (contactId) => {
+  return Http.delete(`${ENV.API_URL}/contact/${contactId}`);
+};
+const getGenerals = (limit, skip, lang) => {
   let data = {};
   if (limit) {
     data.limit = limit;
@@ -212,28 +247,31 @@ const getSeatPlans = (limit, skip) => {
   if (skip) {
     data.skip = skip;
   }
-  return Http.get(`${ENV.API_URL}/seatPlan`, { ...data });
+  if (lang) {
+    data.lang = lang;
+  }
+  return Http.get(`${ENV.API_URL}/general`, { ...data });
 };
-const addSeatPlan = (data) => {
-  return Http.post(`${ENV.API_URL}/seatPlan`, data);
+const addGeneral = (data) => {
+  return Http.post(`${ENV.API_URL}/general`, data);
 };
 
-const updateSeatPlan = (seatPlanId, data) => {
-  return Http.put(`${ENV.API_URL}/seatPlan/${seatPlanId}`, {
-    seatPlan: data,
+const updateGeneral = (generalId, data) => {
+  return Http.put(`${ENV.API_URL}/general/${generalId}`, {
+    general: data,
   });
 };
 
-const getSeatPlan = (seatPlanId) => {
-  return Http.get(`${ENV.API_URL}/seatPlan/${seatPlanId}`);
+const getGeneral = (generalId) => {
+  return Http.get(`${ENV.API_URL}/general/${generalId}`);
 };
 
-const deleteSeatPlan = (seatPlanId) => {
-  return Http.delete(`${ENV.API_URL}/seatPlan/${seatPlanId}`);
+const deleteGeneral = (generalId) => {
+  return Http.delete(`${ENV.API_URL}/general/${generalId}`);
 };
 
-// Venues
-const getVenues = (limit, skip) => {
+// Translates
+const getTranslates = (limit, skip, lang) => {
   let data = {};
   if (limit) {
     data.limit = limit;
@@ -241,147 +279,27 @@ const getVenues = (limit, skip) => {
   if (skip) {
     data.skip = skip;
   }
-  return Http.get(`${ENV.API_URL}/venue`, { ...data });
+  if (lang) {
+    data.lang = lang;
+  }
+  return Http.get(`${ENV.API_URL}/translate`, { ...data });
 };
-const addVenue = (data) => {
-  return Http.post(`${ENV.API_URL}/venue`, data);
+const addTranslate = (data) => {
+  return Http.post(`${ENV.API_URL}/translate`, data);
 };
 
-const updateVenue = (venueId, data) => {
-  return Http.put(`${ENV.API_URL}/venue/${venueId}`, {
-    venue: data,
+const updateTranslate = (translateId, data) => {
+  return Http.put(`${ENV.API_URL}/translate/${translateId}`, {
+    translate: data,
   });
 };
 
-const getVenue = (venueId) => {
-  return Http.get(`${ENV.API_URL}/venue/${venueId}`);
+const getTranslate = (translateId) => {
+  return Http.get(`${ENV.API_URL}/translate/${translateId}`);
 };
 
-const deleteVenue = (venueId) => {
-  return Http.delete(`${ENV.API_URL}/venue/${venueId}`);
-};
-
-// Tags
-const getTags = (limit, skip) => {
-  let data = {};
-  if (limit) {
-    data.limit = limit;
-  }
-  if (skip) {
-    data.skip = skip;
-  }
-  return Http.get(`${ENV.API_URL}/tag`, { ...data });
-};
-const addTag = (data) => {
-  return Http.post(`${ENV.API_URL}/tag`, data);
-};
-
-const updateTag = (tagId, data) => {
-  return Http.put(`${ENV.API_URL}/tag/${tagId}`, {
-    tag: data,
-  });
-};
-
-const getTag = (tagId) => {
-  return Http.get(`${ENV.API_URL}/tag/${tagId}`);
-};
-
-const deleteTag = (tagId) => {
-  return Http.delete(`${ENV.API_URL}/tag/${tagId}`);
-};
-
-// BoxOffices
-const getBoxOffices = (limit, skip) => {
-  let data = {};
-  if (limit) {
-    data.limit = limit;
-  }
-  if (skip) {
-    data.skip = skip;
-  }
-  return Http.get(`${ENV.API_URL}/boxOffice`, { ...data });
-};
-const addBoxOffice = (data) => {
-  return Http.post(`${ENV.API_URL}/boxOffice`, data);
-};
-
-const updateBoxOffice = (boxOfficeId, data) => {
-  return Http.put(`${ENV.API_URL}/boxOffice/${boxOfficeId}`, {
-    boxOffice: data,
-  });
-};
-
-const getBoxOffice = (boxOfficeId) => {
-  return Http.get(`${ENV.API_URL}/boxOffice/${boxOfficeId}`);
-};
-
-const deleteBoxOffice = (boxOfficeId) => {
-  return Http.delete(`${ENV.API_URL}/boxOffice/${boxOfficeId}`);
-};
-
-// Levels
-const getLevels = (limit, skip, eventId) => {
-  let data = {};
-  if (limit) {
-    data.limit = limit;
-  }
-  if (skip) {
-    data.skip = skip;
-  }
-  if (eventId) {
-    data.eventId = eventId;
-  }
-  return Http.get(`${ENV.API_URL}/level`, { ...data });
-};
-
-const levelsByEventId = (eventId) => {
-  return Http.get(`${ENV.API_URL}/level/byEventId`, { eventId });
-};
-const addLevel = (data) => {
-  return Http.post(`${ENV.API_URL}/level`, data);
-};
-
-const updateLevel = (levelId, data) => {
-  return Http.put(`${ENV.API_URL}/level/${levelId}`, {
-    level: data,
-  });
-};
-
-const getLevel = (levelId) => {
-  return Http.get(`${ENV.API_URL}/level/${levelId}`);
-};
-
-const deleteLevel = (levelId) => {
-  return Http.delete(`${ENV.API_URL}/level/${levelId}`);
-};
-
-// Categories
-const getCategories = (limit, skip) => {
-  let data = {};
-  if (limit) {
-    data.limit = limit;
-  }
-  if (skip) {
-    data.skip = skip;
-  }
-  return Http.get(`${ENV.API_URL}/category`, { ...data });
-};
-const addCategory = (data) => {
-  return Http.post(`${ENV.API_URL}/category`, data);
-};
-
-const updateCategory = (categoryId, data) => {
-  return Http.put(`${ENV.API_URL}/category/${categoryId}`, {
-    category: data,
-  });
-};
-
-const getCategory = (categoryId) => {
-  return Http.get(`${ENV.API_URL}/category/${categoryId}`);
-};
-
-const deleteCategory = (categoryId) => {
-  return Http.delete(`${ENV.API_URL}/category/${categoryId}`);
+const deleteTranslate = (translateId) => {
+  return Http.delete(`${ENV.API_URL}/translate/${translateId}`);
 };
 
 // Admins
@@ -440,106 +358,6 @@ const verifyToken = () => {
   return Http.post(`${ENV.API_URL}/admin/verifyToken`);
 };
 
-// PermissionGroups
-const getPermissionGroups = (limit, skip) => {
-  let data = {};
-  if (limit) {
-    data.limit = limit;
-  }
-  if (skip) {
-    data.skip = skip;
-  }
-  return Http.get(`${ENV.API_URL}/admin/permissionGroup`, { ...data });
-};
-const addPermissionGroup = (data) => {
-  return Http.post(`${ENV.API_URL}/admin/permissionGroup`, data);
-};
-
-const updatePermissionGroup = (permissionGroupId, data) => {
-  return Http.patch(
-    `${ENV.API_URL}/admin/permissionGroup/${permissionGroupId}`,
-    {
-      permissionGroup: data,
-    }
-  );
-};
-
-const getPermissionGroup = (permissionGroupId) => {
-  return Http.get(`${ENV.API_URL}/admin/permissionGroup/${permissionGroupId}`);
-};
-
-const deletePermissionGroup = (permissionGroupId) => {
-  return Http.delete(
-    `${ENV.API_URL}/admin/permissionGroup/${permissionGroupId}`
-  );
-};
-
-// Blocks
-const getBlocks = (limit, skip, customQuery = {}) => {
-  let data = { customQuery: JSON.stringify(customQuery) };
-  if (limit) {
-    data.limit = limit;
-  }
-  if (skip) {
-    data.skip = skip;
-  }
-  return Http.get(`${ENV.API_URL}/block`, { ...data });
-};
-const addBlock = (data) => {
-  return Http.post(`${ENV.API_URL}/block`, data);
-};
-
-const updateBlock = (blockId, data) => {
-  return Http.patch(`${ENV.API_URL}/block/${blockId}`, {
-    block: data,
-  });
-};
-
-const getBlock = (blockId) => {
-  return Http.get(`${ENV.API_URL}/block/${blockId}`);
-};
-
-const deleteBlock = (blockId) => {
-  return Http.delete(`${ENV.API_URL}/block/${blockId}`);
-};
-
-// Seats
-const getSeats = (limit, skip) => {
-  if (limit) {
-    data.limit = limit;
-  }
-  if (skip) {
-    data.skip = skip;
-  }
-  return Http.get(`${ENV.API_URL}/seat`, { ...data });
-};
-const addSeat = (data) => {
-  return Http.post(`${ENV.API_URL}/seat`, data);
-};
-
-const updateSeat = (seatId, data) => {
-  return Http.patch(`${ENV.API_URL}/seat/${seatId}`, {
-    seat: data,
-  });
-};
-
-const updateSeats = (seats) => {
-  return Http.patch(`${ENV.API_URL}/seat/bulk`, {
-    seats,
-  });
-};
-
-const getSeat = (seatId) => {
-  return Http.get(`${ENV.API_URL}/seat/${seatId}`);
-};
-
-const deleteSeat = (seatId) => {
-  return Http.delete(`${ENV.API_URL}/seat/${seatId}`);
-};
-const getSeatsByEventAndBlock = (eventId, blockId) => {
-  return Http.get(`${ENV.API_URL}/seat/byEventAndBlock`, { eventId, blockId });
-};
-
 export default {
   login,
   uploadImage,
@@ -557,13 +375,6 @@ export default {
   getAdmin,
   deleteAdmin,
 
-  //permissionGroup
-  getPermissionGroups,
-  getPermissionGroup,
-  addPermissionGroup,
-  updatePermissionGroup,
-  deletePermissionGroup,
-
   //slider
   getSliders,
   getSlider,
@@ -571,87 +382,59 @@ export default {
   updateSlider,
   deleteSlider,
 
-  //Event
-  getEvents,
-  getEvent,
-  getEventsWithDetailedFilters,
-  addEvent,
-  updateEvent,
-  deleteEvent,
+  //lang
+  getLangs,
+  getLang,
+  addLang,
+  updateLang,
+  deleteLang,
 
-  //Show
-  getShows,
-  getShow,
-  addShow,
-  updateShow,
-  deleteShow,
+  //home
+  getHomes,
+  getHome,
+  addHome,
+  updateHome,
+  deleteHome,
 
-  //Ticket
-  getTickets,
-  getTicket,
-  updateTicket,
-  deleteTicket,
-  getTicketsByEventAndBlock,
+  //about
+  getAbouts,
+  getAbout,
+  addAbout,
+  updateAbout,
+  deleteAbout,
 
-  //User
-  getUsers,
+  //treatmentPage
+  getTreatmentPages,
+  getTreatmentPage,
+  addTreatmentPage,
+  updateTreatmentPage,
+  deleteTreatmentPage,
 
-  //SeatPlan
-  getSeatPlans,
-  getSeatPlan,
-  addSeatPlan,
-  updateSeatPlan,
-  deleteSeatPlan,
+  //tedavi
+  getTreatments,
+  getTreatment,
+  addTreatment,
+  updateTreatment,
+  deleteTreatment,
+  getTreatmentViaPerma,
 
-  //Venue
-  getVenues,
-  getVenue,
-  addVenue,
-  updateVenue,
-  deleteVenue,
-
-  //Tag
-  getTags,
-  getTag,
-  addTag,
-  updateTag,
-  deleteTag,
-
-  //BoxOffice
-  getBoxOffices,
-  getBoxOffice,
-  addBoxOffice,
-  updateBoxOffice,
-  deleteBoxOffice,
-
-  //Level
-  getLevels,
-  getLevel,
-  addLevel,
-  updateLevel,
-  deleteLevel,
-  levelsByEventId,
-
-  //Block
-  getBlocks,
-  getBlock,
-  addBlock,
-  updateBlock,
-  deleteBlock,
-
-  //Seat
-  getSeats,
-  getSeat,
-  addSeat,
-  updateSeat,
-  updateSeats,
-  deleteSeat,
-  getSeatsByEventAndBlock,
-
-  //Category
-  getCategories,
-  getCategory,
-  addCategory,
-  updateCategory,
-  deleteCategory,
+  //contact
+  getContacts,
+  getContact,
+  addContact,
+  updateContact,
+  deleteContact,
+  
+  //general
+  getGenerals,
+  getGeneral,
+  addGeneral,
+  updateGeneral,
+  deleteGeneral,
+    //translate
+    getTranslates,
+    getTranslate,
+    addTranslate,
+    updateTranslate,
+    deleteTranslate,
 };

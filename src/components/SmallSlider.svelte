@@ -1,5 +1,7 @@
 <script>
   import { Splide, SplideSlide } from "@splidejs/svelte-splide";
+  import { treatments } from "../services/store";
+
   import Features1 from "./Shared/Features1.svelte";
   import Svg from "../assets/svg.json";
   import "@splidejs/svelte-splide/css";
@@ -8,47 +10,39 @@
 <Splide
   aria-label="My Favorite Images"
   options={{
-    perPage: 2,
-    type: "loop",
+      perPage: 2,
+          breakpoints: {
+            1024: {
+              perPage: 2,
+             
+            },
+            767: {
+              perPage: 2,
+          
+            },
+            640: {
+              perPage: 1,
+        
+            },
+          },
+    type: "slide",
     arrows: false,
     autoplay: true,
+    pagination:false,
     interval: 3000,
   }}
 >
-  <SplideSlide>
-    <Features1
-      icon="{Svg.tooth_whitening} "
-      title="Tooth Whitening"
-      titleClass="text-light-300"
-      iconColor="#374151"
-      description="Competently parallel task researched data and process improvements."
-    />
-  </SplideSlide>
-  <SplideSlide>
-    <Features1
-      icon="{Svg.tooth_whitening} "
-      title="Tooth Whitening"
-      titleClass="text-light-300"
-      iconColor="#374151"
-      description="Competently parallel task researched data and process improvements."
-    />
-  </SplideSlide>
-  <SplideSlide>
-    <Features1
-      icon="{Svg.tooth_whitening} "
-      title="Tooth Whitening"
-      titleClass="text-light-300"
-      iconColor="#374151"
-      description="Competently parallel task researched data and process improvements."
-    />
-  </SplideSlide>
-  <SplideSlide>
-    <Features1
-      icon="{Svg.tooth_whitening} "
-      title="Tooth Whitening"
-      titleClass="text-light-300"
-      iconColor="#374151"
-      description="Competently parallel task researched data and process improvements."
-    />
-  </SplideSlide>
+  {#if $treatments}
+    {#each $treatments as treatment}
+      <SplideSlide>
+        <Features1
+          icon={treatment.icon}
+          title={treatment.title}
+          titleClass="text-light-300 "
+          iconColor="#374151"
+          description="Competently parallel task researched data and process improvements."
+        />
+      </SplideSlide>
+    {/each}
+  {/if}
 </Splide>

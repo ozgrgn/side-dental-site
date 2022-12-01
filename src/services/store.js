@@ -24,7 +24,7 @@ lang.subscribe((value) => {
 
 export const toast = writable({});
 
-
-
-export const modal = writable(null);
-export const closeModal = writable(null);
+export const langs = writable(0);
+export const general = writable(0)
+export const translate = writable(0)
+export const treatments = writable(0)

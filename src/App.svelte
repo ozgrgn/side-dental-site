@@ -2,54 +2,87 @@
 <script>
   import { SvelteToast } from "@zerodevx/svelte-toast";
   import { Route, Router, navigate } from "svelte-navigator";
-  import { modal, lang, user, closeModal } from "./services/store";
-  import Modal from "svelte-simple-modal";
+  import { lang,langs, user, general,translate,treatments } from "./services/store";
   import AdminRoute from "./views/panel/Route.svelte";
-  import SiteRoute from "./views/site/Route.svelte";
+  import DesktopRoutes from "./views/desktop/Route.svelte";
   import Auth from "./views/auth/Auth.svelte";
   import { onDestroy } from "svelte";
-  import SOCKET from "./services/socket";
   import RestService from "./services/rest";
   import moment from "moment-timezone";
+  
   moment.tz.setDefault("Europe/Istanbul");
+ console.log(window.location.pathname)
+  const getGenerals = async () => {
+    let response = await RestService.getGenerals(undefined, undefined, $lang);
+
+    general.set(response["generals"][0]);
+    console.log($general,"general")
+  };
+  getGenerals();
+  const getTranslates = async () => {
+    let response = await RestService.getTranslates(undefined, undefined, $lang);
+    translate.set(response["translates"][0]);
+  };
+  getTranslates();
+
+  const getLangs = async () => {
+    let response = await RestService.getLangs(undefined, undefined);
+    langs.set(response["langs"]);
+    console.log($langs, "langs");
+  };
+  getLangs();
+  const getTreatments = async () => {
+    let response = await RestService.getTreatments(
+      undefined,
+      undefined,
+      $lang,
+      true,
+      undefined
+    );
+    treatments.set(response["treatments"]);
+    console.log($treatments, "treatments");
+  };
+  getTreatments();
   if (
-          window.location.pathname == "/auth/login" ||
-          window.location.pathname == "/panel" ||
-          window.location.pathname == "/panel/"
-        ) {
-  let userAuthSubscription = user.subscribe(async (auth) => {
-    if (!auth) {
-      navigate("/auth/login");
-      SOCKET.stopConnection();
-      if (window.location.pathname.indexOf("admin") != -1) {
+    window.location.pathname == "/auth/login" ||
+    window.location.pathname == "/panel" ||
+    window.location.pathname == "/panel/"||
+    window.location.pathname.includes("panel")
+  ) {
+    let userAuthSubscription = user.subscribe(async (auth) => {
+      console.log(auth,"auth")
+      if (!auth) {
         navigate("/auth/login");
-      }
-    } else {
-      let response = await RestService.verifyToken();
-      if (response && response.status) {
-        SOCKET.startConnection();
-        if (
-          window.location.pathname == "/auth/login" ||
-          window.location.pathname == "/panel" ||
-          window.location.pathname == "/" ||
-          window.location.pathname == "/panel/"
-        ) {
-          navigate("/panel/dashboard");
+   
+        if (window.location.pathname.indexOf("admin") != -1) {
+          navigate("/auth/login");
         }
       } else {
-        user.set(null);
+        let response = await RestService.verifyToken();
+        if (response && response.status) {
+          if (
+            window.location.pathname == "/auth/login" ||
+            window.location.pathname == "/panel" ||
+            window.location.pathname == "/" ||
+            window.location.pathname == "/panel/"
+          ) {
+            navigate("/panel/dashboard");
+          }
+        } else {
+          user.set(null);
+        }
       }
-    }}
-  )};
-  onDestroy(() => {
+    });
+    onDestroy(() => {
     userAuthSubscription;
   });
+  }
+
 
   let browserLang = navigator.language || navigator.userLanguage;
   if (!$lang) lang.set(browserLang.split("-")[0]);
 </script>
 
-<Modal show={$modal} />
 
 <SvelteToast />
 
@@ -57,6 +90,6 @@
   <Route path="auth/*auth" component={Auth} />
 
   <Route path="panel/*" component={AdminRoute} />
-  <Route path="/*" component={SiteRoute} />
-  <Route path="" component={SiteRoute} />
+  <Route path="/*" component={DesktopRoutes} />
+  <Route path="" component={DesktopRoutes} />
 </Router>

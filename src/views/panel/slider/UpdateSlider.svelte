@@ -9,7 +9,6 @@
   import Select from "$components/Form/Select.svelte";
   import Switch from "$components/Switch.svelte";
   import { useParams } from "svelte-navigator";
-  import { modal } from "$services/store";
   import { bind } from "svelte-simple-modal";
   import Alert from "$components/Alert.svelte";
   const deleteSliderApprove = (sliderId) => {

@@ -69,32 +69,9 @@
                 use:link
                 on:click={() => (navbarOpen = false)}
               >
-                {$Translate("Dashboard")}
+                Dashboard
               </a>
-              <a
-                class="text-white font-semibold text-sm {$location.pathname.indexOf(
-                  'event'
-                ) !== -1
-                  ? 'hover:text-white text-base'
-                  : 'text-white/80 hover:text-white'}"
-                href="/panel/events"
-                use:link
-                on:click={() => (navbarOpen = false)}
-              >
-                Satıştaki etkinlikler
-              </a>
-              <a
-                class="text-white font-semibold text-sm {$location.pathname.indexOf(
-                  'show'
-                ) !== -1
-                  ? 'hover:text-white text-base'
-                  : 'text-white/80 hover:text-white'}"
-                href="/panel/shows"
-                use:link
-                on:click={() => (navbarOpen = false)}
-              >
-                Etkinlikler
-              </a>
+
               <a
                 class="text-white font-semibold text-sm {$location.pathname.indexOf(
                   'slider'
@@ -109,89 +86,89 @@
               </a>
               <a
                 class="text-white font-semibold text-sm {$location.pathname.indexOf(
-                  'tag'
+                  'home'
                 ) !== -1
                   ? 'hover:text-white text-base'
                   : 'text-white/80 hover:text-white'}"
-                href="/panel/tags"
+                href="/panel/homes"
                 use:link
                 on:click={() => (navbarOpen = false)}
               >
-                Tag
+                AnaSayfa
               </a>
               <a
                 class="text-white font-semibold text-sm {$location.pathname.indexOf(
-                  'categor'
+                  'about'
                 ) !== -1
                   ? 'hover:text-white text-base'
                   : 'text-white/80 hover:text-white'}"
-                href="/panel/categories"
+                href="/panel/abouts"
                 use:link
                 on:click={() => (navbarOpen = false)}
               >
-                Kategoriler
-              </a>
-
-              <a
-                class="text-white font-semibold text-sm {$location.pathname.indexOf(
-                  'seatPlan'
-                ) !== -1
-                  ? 'hover:text-white text-base'
-                  : 'text-white/80 hover:text-white'}"
-                href="/panel/seatPlans"
-                use:link
-                on:click={() => (navbarOpen = false)}
-              >
-                Oturma Planı
-              </a>
-              <a
-                class="text-white font-semibold text-sm {$location.pathname.indexOf(
-                  'venue'
-                ) !== -1
-                  ? 'hover:text-white text-base'
-                  : 'text-white/80 hover:text-white'}"
-                href="/panel/venues"
-                use:link
-                on:click={() => (navbarOpen = false)}
-              >
-                Mekanlar
-              </a>
-              <a
-                class="text-white font-semibold text-sm {$location.pathname.indexOf(
-                  'boxOffice'
-                ) !== -1
-                  ? 'hover:text-white text-base'
-                  : 'text-white/80 hover:text-white'}"
-                href="/panel/boxOffices"
-                use:link
-                on:click={() => (navbarOpen = false)}
-              >
-                Gişeler
+                Hakkımızda
               </a>
 
               <a
                 class="text-white font-semibold text-sm {$location.pathname.indexOf(
-                  'level'
+                  'treatments_page'
                 ) !== -1
                   ? 'hover:text-white text-base'
                   : 'text-white/80 hover:text-white'}"
-                href="/panel/levels"
+                href="/panel/treatmentpages"
                 use:link
                 on:click={() => (navbarOpen = false)}
               >
-                Fiyatlar
+                Tedavi Sayfası
               </a>
               <a
                 class="text-white font-semibold text-sm {$location.pathname.indexOf(
-                  'user'
+                  'treatment'
                 ) !== -1
                   ? 'hover:text-white text-base'
                   : 'text-white/80 hover:text-white'}"
-                href="/panel/users"
+                href="/panel/treatments"
                 use:link
                 on:click={() => (navbarOpen = false)}
               >
-                Kullanıcılar
+                Tedavi
+              </a>
+              <a
+                class="text-white font-semibold text-sm {$location.pathname.indexOf(
+                  'contact'
+                ) !== -1
+                  ? 'hover:text-white text-base'
+                  : 'text-white/80 hover:text-white'}"
+                href="/panel/contacts"
+                use:link
+                on:click={() => (navbarOpen = false)}
+              >
+                İletişim
+              </a>
+
+              <a
+                class="text-white font-semibold text-sm {$location.pathname.indexOf(
+                  'general'
+                ) !== -1
+                  ? 'hover:text-white text-base'
+                  : 'text-white/80 hover:text-white'}"
+                href="/panel/generals"
+                use:link
+                on:click={() => (navbarOpen = false)}
+              >
+                Genel Bilgiler
+              </a>
+              <a
+                class="text-white font-semibold text-sm {$location.pathname.indexOf(
+                  'translate'
+                ) !== -1
+                  ? 'hover:text-white text-base'
+                  : 'text-white/80 hover:text-white'}"
+                href="/panel/translates"
+                use:link
+                on:click={() => (navbarOpen = false)}
+              >
+                Çeviriler
               </a>
               <a
                 class="text-white font-semibold text-sm {$location.pathname.indexOf(
@@ -205,42 +182,28 @@
               >
                 Admin
               </a>
-
               <a
-                class="text-white font-semibold text-sm {$location.pathname.indexOf(
-                  'permissionGroup'
-                ) !== -1
-                  ? 'hover:text-white text-base'
-                  : 'text-white/80 hover:text-white'}"
-                href="/panel/permissionGroups"
-                use:link
-                on:click={() => (navbarOpen = false)}
-              >
-                Yetki grupları
-              </a>
+              class="text-white font-semibold text-sm {$location.pathname.indexOf(
+                'lang'
+              ) !== -1
+                ? 'hover:text-white text-base'
+                : 'text-white/80 hover:text-white'}"
+              href="/panel/langs"
+              use:link
+              on:click={() => (navbarOpen = false)}
+            >
+              Diller
+            </a>
             </div>
             <div
               class="flex flex-col md:flex-row items-center justify-center gap-2 w-4/12"
             >
-              <span
-                class="font-bold text-white/80 cursor-pointer"
-                on:click={() => {
-                  navbarOpen = false;
-                  langTrigger("tr");
-                }}>TR</span
-              >
-              <span
-                class="font-bold text-white/80 cursor-pointer"
-                on:click={() => {
-                  navbarOpen = false;
-                  langTrigger("en");
-                }}>EN</span
-              >
-              <span class="text-white/80 mx-1 font-thin hidden md:block">|</span
-              >
+             
+             
               <span class="text-white/80 font-medium cursor-pointer">
                 {$user?.fullName}
-              </span>
+              </span> <span class="text-white/80 mx-1 font-thin hidden md:block">|</span
+              >
               <span
                 class="text-white font-bold cursor-pointer"
                 on:click={() => logout()}

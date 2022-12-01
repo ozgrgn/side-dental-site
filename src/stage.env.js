@@ -1,4 +1,4 @@
 const env = {
-  API_URL: "http://localhost:3000",
+  API_URL: "https://side-dental.herokuapp.com"
 };
 export default env

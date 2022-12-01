@@ -4,7 +4,6 @@
   import { navigate } from "svelte-navigator";
   import ToastService from "$services/toast";
   import Select from "$components/Form/Select.svelte";
-  import { modal } from "$services/store";
   import { bind } from "svelte-simple-modal";
   import Alert from "$components/Alert.svelte";
   const deleteSliderApprove = (sliderId) => {
@@ -22,11 +21,18 @@
   };
 
   let sliders;
+  let langs;
+  let lang;
   let limit = 10;
   let skip = 0;
   let totalDataCount = 0;
+  const getLang = async () => {
+    let response = await RestService.getLangs(undefined,undefined);
+    langs = response["langs"];
+}
+getLang();
   const getSliders = async () => {
-    let response = await RestService.getSliders(limit, skip);
+    let response = await RestService.getSliders(limit, skip, lang);
     sliders = response["sliders"];
     totalDataCount = response["count"];
   };
@@ -88,13 +94,23 @@
             <thead>
               <tr>
                 <th
-                class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold  {color ===
-                'light'
-                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                  : 'bg-red-700 text-red-200 border-red-600'}"
-              >
-                Dil
-              </th>
+                  class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold  {color ===
+                  'light'
+                    ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                    : 'bg-red-700 text-red-200 border-red-600'}"
+                >
+                  {#if langs}
+                    <Select
+                      bind:value={lang}
+                      change={() => getSliders()}
+                      values={langs}
+                      title={"Dil seç"}
+                      valuesKey={"lang"}
+                      valuesTitleKey={"title"}
+                      customClass={"w-full border-0 max-w-xs"}
+                    />
+                  {/if}
+                </th>
                 <th
                   class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold  {color ===
                   'light'
@@ -124,10 +140,10 @@
               {#each sliders as slider}
                 <tr>
                   <td
-                  class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center"
-                >
-                  {slider.lang}
-                </td>
+                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center"
+                  >
+                    {slider.lang}
+                  </td>
                   <td
                     class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center"
                   >

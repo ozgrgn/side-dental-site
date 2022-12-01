@@ -7,7 +7,6 @@
   import { onMount } from "svelte";
   import { navigate, useParams } from "svelte-navigator";
   const params = useParams();
-  import { modal } from "$services/store";
   import { bind } from "svelte-simple-modal";
   import Alert from "$components/Alert.svelte";
   const deleteAdminApprove = (adminId) => {

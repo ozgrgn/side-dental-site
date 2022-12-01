@@ -4,7 +4,6 @@
   import { navigate } from "svelte-navigator";
   import ToastService from "$services/toast";
   import Select from "$components/Form/Select.svelte";
-  import { modal } from "$services/store";
   import { bind } from "svelte-simple-modal";
   import Alert from "$components/Alert.svelte";
   const deleteAdminApprove = (adminId) => {

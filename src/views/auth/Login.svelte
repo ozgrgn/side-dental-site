@@ -112,7 +112,7 @@
               disabled={!emailFromInputIsValid || !passwordIsValid
                 ? true
                 : false}
-              class="disabled:bg-blueGray-400 bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold  px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full "
+              class="disabled:bg-blueGray-400 bg-blueGray-800 text-dark-300 active:bg-blueGray-600 text-sm font-bold  px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full "
               type="button"
             >
               {$Translate("Log-In")}
