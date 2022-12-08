@@ -36,7 +36,8 @@
   import UpdateTranslate from "./translate/UpdateTranslate.svelte";
   import CreateTranslate from "./translate/CreateTranslate.svelte";
   import Translates from "./translate/Translates.svelte";
-
+  import { modal } from "../../services/store";
+  import Modal from "svelte-simple-modal";
   // let userAuthSubscription = user.subscribe(async (auth) => {
   //   if (!auth) {
   //     navigate("/auth/login");
@@ -65,7 +66,7 @@
   //   userAuthSubscription;
   // });
 </script>
-
+<Modal show={$modal} />
 <div>
   <!-- <Sidebar /> -->
 

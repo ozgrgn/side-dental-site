@@ -14,13 +14,6 @@
       window.scrollTo(0, 0);
     }
   }
-  let langs;
-  console.log($translate)
-  const getLangs = async () => {
-    let response = await RestService.getLangs(undefined, undefined);
-    langs = response["langs"];
-  };
-  getLangs();
   const langTrigger = (_lang) => {
     document.documentElement.setAttribute("lang", _lang);
     setTimeout(() => {
@@ -111,12 +104,12 @@
             : 'bg-transparent'} "
         >
           <AItem
-            customClass="justify-center uppercase"
+            customClass="justify-center"
             active={$location.pathname == "/"}
             path="/">{$translate.homePage}</AItem
           >
           <AItem
-            customClass="justify-center uppercase"
+            customClass="justify-center"
             active={$location.pathname == "/about"}
             path="/about">{$translate.about}</AItem
           >
@@ -140,7 +133,7 @@
                 {#each treatments as treatment}
                   <AItem
                     bind:hover
-                    customClass="justify-start w-fit pl-2  {hover
+                    customClass="justify-start w-fit pl-2 {hover
                       ? 'opacity-100'
                       : '  opacity-0 h-0'}"
                     active={$location.pathname ==
@@ -153,7 +146,7 @@
             </div>
           </div>
           <AItem
-            customClass="justify-center uppercase"
+            customClass="justify-center"
             active={$location.pathname == "/contact"}
             path="/contact">{$translate.contact}</AItem
           >
@@ -210,20 +203,17 @@
           <form class=" sm:max-w-xs">
             <fieldset class="w-full">
               <label for="language" class="sr-only">Language</label>
-            
               <div class="relative">
-                {#if langs}
                 <LangSelect
                   value={$lang}
                   change={(value) => langTrigger(value)}
-                  values={langs}
-                  title={$translate.language}
+                  values={[{ lang: "en" }, { lang: "tr" }, { lang: "ru" }]}
+                  title="sdf"
                   valuesKey={"lang"}
                   valuesTitleKey={"lang"}
                   required={false}
-                  customClass={"uppercase w-20 appearance-none w-full  shadow-none bg-white border border-transparent rounded-md pl-3 text-light-300 focus:outline-none focus:ring-white focus:border-white sm:text-sm lg:text-lg"}
+                  customClass={"uppercase appearance-none w-full  shadow-none bg-white border border-transparent rounded-md pl-3 text-light-300 focus:outline-none focus:ring-white focus:border-white sm:text-sm lg:text-lg"}
                 />
-                {/if}
                 <div
                   class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center"
                 >

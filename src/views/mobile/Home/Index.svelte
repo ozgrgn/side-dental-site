@@ -1,12 +1,13 @@
 <script>
   import RestService from "$services/rest";
-  import MainSlider from "$components/Sliders/MainSliderDesk.svelte";
-  import SmallSlider from "$components/Sliders/SmallSliderDesk.svelte";
+  import MainSlider from "$components/Sliders/MainSliderMob.svelte";
+  import SmallSlider from "$components/Sliders/SmallSliderMob.svelte";
   import Box2 from "./Box2.svelte";
   import Map from "../Shared/Map.svelte";
   import Treatments from "../../../components/Shared/TreatmentCards.svelte";
   import Reviews from "$components/Shared/Reviews.svelte";
   import { lang } from "../../../services/store";
+  import ImgSliderMob from "$components/Sliders/ImgSliderMob.svelte";
 
   let sliders;
   let homes;
@@ -41,14 +42,16 @@
 
 {#if sliders}
   <div class="bg-dark-100 pb-20">
-    <div class="flex justify-center relative w-full">
+    <div class="flex justify-center relative">
       <MainSlider {sliders} />
     </div>
 
     <div
-      class="w-full absolute lg:w-6/12 flex flex-col font-semibold items-start top-24 pl-20 right-0"
+      class="w-full absolute flex flex-col font-semibold items-start top-20 px-2 right-0"
     >
-      <h3 class="text-4xl text-light-300 tracking-tight font-thin leading-12">
+      <h3
+        class="text-4xl w-full text-light-300 tracking-tight font-thin leading-12"
+      >
         {sliders[0]?.title}
       </h3>
       <h3
@@ -57,17 +60,13 @@
         {sliders[0]?.description}
       </h3>
 
-      <div class="z-10 w-full">
-        <SmallSlider />
-      </div>
-
       <!-- 
   <div class="pt-2">
     <LightButton iconRightClass={">"}>Dental Solutions</LightButton>
   </div> -->
     </div>
     <div
-      class="2xl:mt-[34rem] xl:mt-[28rem] mt-[28rem]  top-0 lg:mx-64 md:mx-16 absolute "
+      class="2xl:mt-[34rem] xl:mt-[28rem] mt-[38rem] -top-48 lg:mx-64 md:mx-16 absolute "
     >
       {#if homes}
         <div class=" z-9">
@@ -76,22 +75,21 @@
       {/if}
     </div>
 
-    <div class="pt-32"/>
-    <div class="container mx-auto">
-    {#if homes}
-      <Treatments
-        spot={homes[0].treatment_spot}
-        header={homes[0].treatment_header}
-        {treatments}
-        customClass="2xl:pt-28 xl:pt-32 pt-68"
-      />
-    {/if}
-  </div>
+    <div class=" mx-4 mt-96">
+      {#if homes}
+        <ImgSliderMob
+          spot={homes[0].treatment_spot}
+          header={homes[0].treatment_header}
+          {treatments}
+          customClass="2xl:pt-28 xl:pt-32 pt-68"
+        />
+      {/if}
+    </div>
   </div>
   {#if homes}
-    <div class=" px-6  py-10  bg-white">
-      <div class="container mx-auto">
-        <div class="text-light-300 text-4xl tracking-tight ">
+    <div class="py-10  bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-light-300 text-4xl tracking-tight  ">
           {homes[0].review_spot}
         </div>
 
@@ -104,7 +102,7 @@
       </div>
     </div>
 
-    <div class="pb-16 bg-dark-100">
+    <div class="bg-dark-100">
       <Map
         spot={homes[0].map_spot}
         header={homes[0].map_header}

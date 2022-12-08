@@ -17,11 +17,11 @@ console.log(sliders,"sfsf")
 <div class="relative">
   
     <img
-      class="h-[calc(100vh-160px)] md:h-100 w-auto object-cover  "
-      src={slider.backgroundBanner}
+      class="h-[calc(100vh-160px)] w-auto object-cover  "
+      src={slider.mobileBanner}
       alt=""
     />
-    <div class="flex lg:hidden absolute top-0 w-full h-full bg-white/30"></div>
+    <div class="flex lg:hidden absolute top-0 w-full h-full bg-white/70"></div>
 
   </div>
   </SplideSlide>

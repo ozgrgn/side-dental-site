@@ -183,7 +183,7 @@
 </script>
 
 <!-- REVIEWS -->
-<div class=" rounded-lg mx-5 md:mx-0 hidden-xs ">
+<div class=" rounded-lg md:mx-0 hidden-xs ">
   <div class="container mx-auto">
     <div class="rounded-lg">
       <div class="testimonials">
@@ -211,7 +211,7 @@
           {#each filteredReviews as review}
             <SplideSlide>
               <div
-                class="review-container h-72 bg-white shadow shadow-2xl mx-10 mt-10 mb-20 rounded-md"
+                class="review-container h-72 bg-white shadow shadow-2xl mx-6 md:mx-10 mt-10 mb-20 rounded-md ≈"
               >
                 <a
                   class="review-header "

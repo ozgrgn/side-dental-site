@@ -1,42 +1,31 @@
 <script>
   import { Splide, SplideSlide } from "@splidejs/svelte-splide";
-  import { treatments } from "../services/store";
+  import { treatments } from "../../services/store";
 
-  import Features1 from "./Shared/Features1.svelte";
-  import Svg from "../assets/svg.json";
+  import Features1 from "../Shared/Features1.svelte";
+  import Svg from "../../assets/svg.json";
   import "@splidejs/svelte-splide/css";
+  import TreatmentCards from "$components/Shared/TreatmentCards.svelte";
+  import Card from "$components/Shared/Card.svelte";
 </script>
 
 <Splide
   aria-label="My Favorite Images"
   options={{
-      perPage: 2,
-          breakpoints: {
-            1024: {
-              perPage: 2,
-             
-            },
-            767: {
-              perPage: 2,
-          
-            },
-            640: {
-              perPage: 1,
-        
-            },
-          },
-    type: "slide",
+    perPage: 1,
+
+    type: "loop",
     arrows: false,
     autoplay: true,
-    pagination:false,
+    pagination: false,
     interval: 3000,
   }}
 >
   {#if $treatments}
     {#each $treatments as treatment}
       <SplideSlide>
-        <Features1
-          icon={treatment.icon}
+        <Card
+          treatment={treatment}
           title={treatment.title}
           titleClass="text-light-300 "
           iconColor="#374151"

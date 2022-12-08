@@ -26,11 +26,11 @@
   let limit = 10;
   let skip = 0;
   let totalDataCount = 0;
-  const getLang = async () => {
+  const getLangs = async () => {
     let response = await RestService.getLangs(undefined, undefined);
     langs = response["langs"];
   };
-  getLang();
+  getLangs();
   const getAbouts = async () => {
     let response = await RestService.getAbouts(limit, skip, lang);
     abouts = response["abouts"];

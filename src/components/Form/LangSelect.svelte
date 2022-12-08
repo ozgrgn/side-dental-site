@@ -7,7 +7,6 @@
     export let values;
     export let valuesKey;
     export let valuesTitleKey;
-    export let title = "Select";
     export let change = () => {};
     export let customClass = "";
     export let isValid;
@@ -44,7 +43,7 @@
     bind:value
     on:change={change(value)}
   >
-    <option disabled value={"disabled"}>{title}</option>
+    
     {#each values as _value}
       <option value={_value[valuesKey]}>{_value[valuesTitleKey]}</option>
     {/each}

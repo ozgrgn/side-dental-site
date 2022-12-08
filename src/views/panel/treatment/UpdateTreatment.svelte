@@ -299,6 +299,8 @@
               <TextEditor
                 placeholder={"Text 1"}
                 bind:value={treatment.text.value}
+                bind:incomingValue={treatment.text.value}
+
               />
             </div>
           </div>

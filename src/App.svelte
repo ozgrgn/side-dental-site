@@ -2,21 +2,28 @@
 <script>
   import { SvelteToast } from "@zerodevx/svelte-toast";
   import { Route, Router, navigate } from "svelte-navigator";
-  import { lang,langs, user, general,translate,treatments } from "./services/store";
+  import {
+    lang,
+    langs,
+    user,
+    general,
+    translate,
+    treatments,
+  } from "./services/store";
   import AdminRoute from "./views/panel/Route.svelte";
   import DesktopRoutes from "./views/desktop/Route.svelte";
+  import MobileRoutes from "./views/mobile/Route.svelte";
   import Auth from "./views/auth/Auth.svelte";
   import { onDestroy } from "svelte";
   import RestService from "./services/rest";
-  import moment from "moment-timezone";
-  
-  moment.tz.setDefault("Europe/Istanbul");
- console.log(window.location.pathname)
+  import { isDesktop } from "$services/utils";
+
+  console.log(window.location.pathname);
   const getGenerals = async () => {
     let response = await RestService.getGenerals(undefined, undefined, $lang);
 
     general.set(response["generals"][0]);
-    console.log($general,"general")
+    console.log($general, "general");
   };
   getGenerals();
   const getTranslates = async () => {
@@ -46,14 +53,14 @@
   if (
     window.location.pathname == "/auth/login" ||
     window.location.pathname == "/panel" ||
-    window.location.pathname == "/panel/"||
+    window.location.pathname == "/panel/" ||
     window.location.pathname.includes("panel")
   ) {
     let userAuthSubscription = user.subscribe(async (auth) => {
-      console.log(auth,"auth")
+      console.log(auth, "auth");
       if (!auth) {
         navigate("/auth/login");
-   
+
         if (window.location.pathname.indexOf("admin") != -1) {
           navigate("/auth/login");
         }
@@ -74,10 +81,9 @@
       }
     });
     onDestroy(() => {
-    userAuthSubscription;
-  });
+      userAuthSubscription;
+    });
   }
-
 
   let browserLang = navigator.language || navigator.userLanguage;
   if (!$lang) lang.set(browserLang.split("-")[0]);
@@ -90,6 +96,9 @@
   <Route path="auth/*auth" component={Auth} />
 
   <Route path="panel/*" component={AdminRoute} />
-  <Route path="/*" component={DesktopRoutes} />
-  <Route path="" component={DesktopRoutes} />
+  {#if isDesktop()}
+    <Route component={DesktopRoutes} />
+  {:else}
+    <Route component={MobileRoutes} />
+  {/if}
 </Router>
