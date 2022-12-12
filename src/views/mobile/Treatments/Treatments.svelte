@@ -46,20 +46,20 @@
   />
   {#if treatmentPage && treatment}
     <div class="absolute top-0 left-0 w-full">
-      <div class="container mx-auto z-20">
+      <div class=" mx-5 z-20">
         <TreatmentsHero {treatment} {treatmentPage} />
       </div>
     </div>
   {/if}
 </div>
-<div class="container mx-auto grid grid-cols-12">
-  <div class="col-span-8 pt-10 w-5/6">
+<div class="container px-5">
+  <div class="pt-10 ">
     <TreatmentsDetail {treatment} />
   </div>
 
   <div class="flex flex-col">
     <div
-      class="right-menu w-72 lg:w-96 h-fit bg-light-300 rounded-md -mt-10 z-20"
+      class="px-5 right-menu h-fit bg-light-300 rounded-md  z-20"
     >
       <div class="text-4xl text-white w-16 border-b-4 border-white m-8 h-14">
         {#if $translate}
@@ -84,7 +84,7 @@
       </div>
     </div>
     <div
-      class="w-72 lg:w-96 my-10 border-8 border-dark-300/10 rounded-md flex flex-col p-8"
+      class=" my-10 border-8 border-dark-300/10 rounded-md flex flex-col p-8"
     >
       <div
         class="lg:text-3xl md:text-2xl font-medium tracking-tight text-light-300 border-b h-12"

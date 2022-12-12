@@ -21,7 +21,7 @@
             class="bg-white w-16 h-6 mb-2 text-center flex flex-col justify-center rounded-md text-sm text-light-300"
           >
             <div class="flex justify-center">
-              {$translate?.book} <svg
+              {$translate?.book=="Rezervasyon"?"Rez.":$translate?.book} <svg
                 class="h-3 w-3 mt-[0.2rem] ml-1"
                 fill="#bc74a5"
                 viewBox="0 0 122.88 122.88"
@@ -47,7 +47,7 @@
             class="bg-white w-16 h-6 mb-2 text-center flex flex-col justify-center rounded-md text-sm text-light-300"
           >
             <div class="flex justify-center">
-              {$translate.book} <svg
+              {$translate?.book=="Rezervasyon"?"Rez.":$translate?.book} <svg
                 class="h-3 w-3 mt-[0.2rem] ml-1"
                 fill="#bc74a5"
                 viewBox="0 0 122.88 122.88"
@@ -73,7 +73,7 @@
             class="bg-white w-16 h-6 mb-2 text-center flex flex-col justify-center rounded-md text-sm text-light-300"
           >
             <div class="flex justify-center">
-              {$translate.book} <svg
+              {$translate?.book=="Rezervasyon"?"Rez.":$translate?.book} <svg
                 class="h-3 w-3 mt-[0.2rem] ml-1"
                 fill="#bc74a5"
                 viewBox="0 0 122.88 122.88"
@@ -99,7 +99,7 @@
             class="bg-white w-16 h-6 mb-2 text-center flex flex-col justify-center rounded-md text-sm text-light-300"
           >
             <div class="flex justify-center">
-              {$translate.book} <svg
+              {$translate?.book=="Rezervasyon"?"Rez.":$translate?.book} <svg
                 class="h-3 w-3 mt-[0.2rem] ml-1"
                 fill="#bc74a5"
                 viewBox="0 0 122.88 122.88"
@@ -125,7 +125,7 @@
             class="bg-white w-16 h-6 mb-2 text-center flex flex-col justify-center rounded-md text-sm text-light-300"
           >
             <div class="flex justify-center">
-              {$translate.book} <svg
+              {$translate?.book=="Rezervasyon"?"Rez.":$translate?.book} <svg
                 class="h-3 w-3 mt-[0.2rem] ml-1"
                 fill="#bc74a5"
                 viewBox="0 0 122.88 122.88"
@@ -151,7 +151,7 @@
             class="bg-white w-16 h-6 mb-2 text-center flex flex-col justify-center rounded-md text-sm text-light-300"
           >
             <div class="flex justify-center">
-              {$translate.book} <svg
+              {$translate?.book=="Rezervasyon"?"Rez.":$translate?.book} <svg
                 class="h-3 w-3 mt-[0.2rem] ml-1"
                 fill="#bc74a5"
                 viewBox="0 0 122.88 122.88"

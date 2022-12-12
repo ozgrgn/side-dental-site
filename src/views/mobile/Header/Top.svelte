@@ -6,13 +6,7 @@
 </script>
 
 <div class="relative">
-  <img
-    class=" {$location.pathname == '/about'
-      ? 'absolute left-0 z-1 '
-      : 'hidden'}"
-    src="/assets/img/about/about_us_background1.jpg"
-    alt=""
-  />
+
   <div
     class="container hidden lg:flex md:border-b justify-between mx-auto bg-transparent z-20 "
   >

@@ -17,6 +17,7 @@
         <Route path="/about" component={About} />
         <Route path="/treatments/:perma" component={Treatments} />
         <Route path="/contact" component={Contact} />
+
       </Router>
     </div>
   </div>

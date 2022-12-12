@@ -50,7 +50,7 @@
       class="w-full absolute flex flex-col font-semibold items-start top-20 px-2 right-0"
     >
       <h3
-        class="text-4xl w-full text-light-300 tracking-tight font-thin leading-12"
+        class="text-4xl w-full text-light-300 tracking-tight font-thin"
       >
         {sliders[0]?.title}
       </h3>
@@ -75,11 +75,15 @@
       {/if}
     </div>
 
-    <div class=" mx-4 mt-96">
-      {#if homes}
+    <div class=" mx-4 mt-52  ">
+      {#if homes && treatments}
+      <div class="text-light-300 text-3xl tracking-tight  ">
+        {homes[0].treatment_spot}
+      </div>
+      <div class="text-dark-300 font-semibold tracking-tight text-5xl mb-10">
+        {homes[0].treatment_header}
+      </div>
         <ImgSliderMob
-          spot={homes[0].treatment_spot}
-          header={homes[0].treatment_header}
           {treatments}
           customClass="2xl:pt-28 xl:pt-32 pt-68"
         />
@@ -92,7 +96,6 @@
         <div class="text-light-300 text-4xl tracking-tight  ">
           {homes[0].review_spot}
         </div>
-
         <div class="text-dark-300 font-semibold tracking-tight text-5xl">
           {homes[0].review_header}
         </div>

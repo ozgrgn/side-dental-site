@@ -19,6 +19,6 @@
 >
   <span class="">{treatmentPage?.header}</span>
 </div>
-<p class="text-white/90 w-1/2 pt-2 md:pt-8">
+<p class="text-white/90  pt-2 md:pt-8">
   {treatmentPage?.text}
 </p>

@@ -8,7 +8,7 @@
 <div class="flex flex-col relative rounded-md">
   <img class="w-full rounded-t-md " src={treatment.images[0].image} alt="" />
   <div
-    class="absolute shadow-2xl drop-shadow rounded-md bg-white 2xl:top-52 xl:top-40 lg:top-32 top-52 left-8 lg:h-20 lg:w-20 h-16 w-16 flex flex-col justify-center items-center"
+    class="absolute shadow-2xl drop-shadow rounded-md bg-white 2xl:top-52 xl:top-40 lg:top-32 top-48 left-8 lg:h-20 lg:w-20 h-20 w-20 flex flex-col justify-center items-center"
   >
     {@html treatment.icon}
   </div>
@@ -21,7 +21,7 @@
     </p>
     <div class="flex justify-center">
     <button
-    class="absolute md:hidden h-8 bottom-1 bg-white drop-shadow shadow-2xl text-light-300 active:bg-dark-300 text-xs font-bold uppercase px-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    class="absolute md:hidden h-8 bottom-2 bg-white drop-shadow shadow-2xl text-light-300 active:bg-dark-300 text-xs font-bold uppercase px-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
     type="button"
   >
    {$translate.book}

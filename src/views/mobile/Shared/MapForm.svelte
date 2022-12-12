@@ -9,7 +9,7 @@
 </script>
 
 <div
-  class="lg:-ml-20 shadow-2xl bg-white h-[28rem] lg:w-2/6 m-4 flex flex-col justify-center lg:my-auto px-10"
+  class="lg:-ml-20 shadow-2xl bg-white h-[28rem] lg:w-2/6 m-4 flex flex-col justify-center lg:my-auto px-2 pr-4 md:pr-0 md:px-10"
 >
   <div class="flex flex-col pl-3 text-white">
     {#if $translate}

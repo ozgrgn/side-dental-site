@@ -2,13 +2,14 @@
   import RestService from "$services/rest";
 
   import AItem from "./AItem.svelte";
-  import { useLocation, navigate } from "svelte-navigator";
+  import { useLocation, navigate,useParams } from "svelte-navigator";
   import Svg from "../../../assets/svg.json";
   import Top from "./Top.svelte";
   import LangSelect from "$components/Form/LangSelect.svelte";
   import { lang, translate, general } from "../../../services/store";
 
   const location = useLocation();
+
   $: {
     if ($location) {
       window.scrollTo(0, 0);

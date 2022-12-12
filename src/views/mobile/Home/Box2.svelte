@@ -7,7 +7,7 @@ export let header;
 
 <div class=" bg-light-300 rounded-lg flex flex-col shadow-2xl mx-4 pt-5">
   <h3
-    class="text-4xl text-white border-b h-28 flex flex-col justify-center mx-14  "
+    class="text-3xl text-white border-b h-24 flex flex-col justify-center mx-14  "
   >
     {header}
   </h3>

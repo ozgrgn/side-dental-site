@@ -46,7 +46,7 @@
     </div>
 
     <div
-      class="w-full absolute lg:w-6/12 flex flex-col font-semibold items-start top-24 pl-20 right-0"
+      class="w-full absolute lg:w-6/12  flex flex-col font-semibold items-start top-24 pl-20 right-0"
     >
       <h3 class="text-4xl text-light-300 tracking-tight font-thin leading-12">
         {sliders[0]?.title}
@@ -67,7 +67,7 @@
   </div> -->
     </div>
     <div
-      class="2xl:mt-[34rem] xl:mt-[28rem] mt-[28rem]  top-0 lg:mx-64 md:mx-16 absolute "
+      class="2xl:mt-[34rem] xl:mt-[28rem] mt-[28rem]  top-0 xl:mx-64 mx-16 absolute "
     >
       {#if homes}
         <div class=" z-9">
@@ -76,7 +76,7 @@
       {/if}
     </div>
 
-    <div class="pt-32"/>
+    <div class="pt-56 xl:pt-32 "/>
     <div class="container mx-auto">
     {#if homes}
       <Treatments

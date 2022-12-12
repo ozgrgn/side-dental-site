@@ -18,7 +18,6 @@
   import RestService from "./services/rest";
   import { isDesktop } from "$services/utils";
 
-  console.log(window.location.pathname);
   const getGenerals = async () => {
     let response = await RestService.getGenerals(undefined, undefined, $lang);
 
@@ -29,6 +28,8 @@
   const getTranslates = async () => {
     let response = await RestService.getTranslates(undefined, undefined, $lang);
     translate.set(response["translates"][0]);
+    console.log($translate, "translate");
+
   };
   getTranslates();
 
@@ -57,7 +58,6 @@
     window.location.pathname.includes("panel")
   ) {
     let userAuthSubscription = user.subscribe(async (auth) => {
-      console.log(auth, "auth");
       if (!auth) {
         navigate("/auth/login");
 

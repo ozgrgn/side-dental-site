@@ -10,7 +10,7 @@
   export let boxDesc;
 </script>
 
-<div class="xl:pt-20 pt-8">
+<div class="xl:pt-20 pt-6">
   <h4
     class="{title
       ? ''

@@ -4,8 +4,9 @@
   import { translate } from "../../../services/store";
   import Svg from "../../../assets/svg.json";
   import Map from "../Shared/Map.svelte";
-  import { lang,general } from "../../../services/store";
+  import { lang, general } from "../../../services/store";
   let contact;
+  let homes;
   const getContacts = async () => {
     let response = await RestService.getContacts(undefined, undefined, $lang);
 
@@ -13,6 +14,13 @@
     console.log(contacts, "contacts");
   };
   getContacts();
+  const getHomes = async () => {
+    let response = await RestService.getHomes(undefined, undefined, $lang);
+
+    homes = response["homes"];
+    console.log(homes, "homes");
+  };
+  getHomes();
 </script>
 
 <div class="relative bg-dark-300 h-96 w-full z-10">
@@ -22,7 +30,7 @@
     alt=""
   />
   {#if contact && $translate}
-    <div class="container mx-auto">
+    <div class="container px-5">
       <div class="flex text-lg text-white/90 pt-20 ">
         <a use:link href="/"> {$translate.homePage} </a>
         <div class=" w-1 h-1 m-3 mt-3 bg-white/50 rounded-full" />
@@ -30,39 +38,39 @@
       </div>
 
       <div
-        class="text-6xl text-white/90 tracking-tight w-fit pt-8 border-b-4 border-light-300/80 h-28 "
+        class="text-6xl text-white/90 tracking-tight w-fit pt-8 -4 border-light-300/80 h-28 "
       >
         <span class="">{contact.header}</span>
       </div>
-      <p class="text-white/90 w-1/2 pt-8">
+      <p class="text-white/90 pt-8">
         {contact.text}
       </p>
     </div>{/if}
 </div>
 
-<div class="container mx-auto">
+<div class="container px-5">
   <div class="flex flex-col">
-    <div class="flex justify-center pb-10 pt-20">
+    <div class="flex flex-col justify-center pb-10 pt-20">
       {#if contact}
         <div class="text-6xl font-bold tracking-tight text-light-300">
           {contact.spot}
         </div>
-        <h1 class="pl-2 text-6xl font-bold tracking-tight text-dark-300">
+        <h1 class=" text-6xl font-bold tracking-tight text-dark-300">
           {contact.title}
         </h1>
       {/if}
     </div>
     <div class="flex justify-center">
       {#if contact}
-        <p class="lg:w-1/2 px-10 text-center">
+        <p class="">
           {contact.description}
         </p>
       {/if}
     </div>
     <div class="flex justify-center my-10">
-      <div class="lg:w-2/3 grid grid-cols-4 gap-1 h-32 ">
+      <div class=" gap-1 ">
         <div class="flex flex-col">
-          <div class="flex flex-col justify-center z-10 border-r">
+          <div class="flex flex-col justify-center z-10 ">
             <div class="h-[5.2rem] flex justify-center w-full">
               <svg
                 class="h-20"
@@ -89,7 +97,7 @@
           </div>
         </div>
         <div class="flex flex-col">
-          <div class="flex flex-col justify-center z-10 border-r">
+          <div class="flex flex-col justify-center z-10 ">
             <div class="h-[5.2rem] flex justify-center w-full">
               <svg
                 class="h-20"
@@ -114,7 +122,7 @@
           </div>
         </div>
         <div class="flex flex-col">
-          <div class="flex flex-col justify-center z-10 border-r">
+          <div class="flex flex-col justify-center z-10 ">
             <div class="h-[5.2rem] flex justify-center w-full">
               <svg
                 class="h-20"
@@ -164,6 +172,13 @@
     </div>
   </div>
 </div>
-<div class="pb-16 mt-20 bg-dark-100">
-  <Map title={false} mapBox="mapForm" />
+<div class="relative pb-16 bg-dark-100">
+  {#if homes}
+  <Map
+    title={true}
+    mapBox="mapForm"
+    spot={homes[0].map_spot}
+    header={homes[0].map_header}
+  />
+  {/if}
 </div>

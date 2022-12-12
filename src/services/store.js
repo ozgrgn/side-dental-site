@@ -20,6 +20,7 @@ document.documentElement.setAttribute("lang", _lang);
 export const lang = writable(_lang);
 lang.subscribe((value) => {
   localStorage.setItem("lang", value);
+  
 });
 
 export const toast = writable({});
