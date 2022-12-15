@@ -38,12 +38,12 @@
       </div>
 
       <div
-        class="text-6xl text-white/90 tracking-tight w-fit pt-8 -4 border-light-300/80 h-28 "
+      class="text-6xl text-white/90 tracking-tight w-fit pt-8 border-b-4 border-light-300/80 h-28 "
       >
-        <span class="">{contact.header}</span>
+        <span class="">{contact?.header}</span>
       </div>
-      <p class="text-white/90 pt-8">
-        {contact.text}
+      <p class="text-white/90 pt-2 md:pt-8">
+        {contact?.text}
       </p>
     </div>{/if}
 </div>
