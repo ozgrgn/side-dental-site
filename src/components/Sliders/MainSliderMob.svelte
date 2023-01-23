@@ -21,7 +21,7 @@ console.log(sliders,"sfsf")
       src={slider.mobileBanner}
       alt=""
     />
-    <div class="flex lg:hidden absolute top-0 w-full h-full bg-white/70"></div>
+    <div class="flex lg:hidden absolute top-0 w-full h-full bg-white/10"></div>
 
   </div>
   </SplideSlide>

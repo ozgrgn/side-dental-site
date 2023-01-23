@@ -30,3 +30,4 @@ export const general = writable(0)
 export const translate = writable(0)
 export const treatments = writable(0)
 export const modal = writable(null);
+

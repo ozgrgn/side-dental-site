@@ -256,22 +256,7 @@
   class="lg:hidden {active ? 'visible' : 'invisible'} top-20 aside-container"
   class:active
 >
-  <aside
-    class="bg-white fixed w-[80%] transition-all duration-1000 z-[1000] top-20 bottom-20 "
-  >
-    <div class="menu flex flex-col h-full mb-10">
-      {#each Array(4) as _, i}
-        <a
-          class="flex items-center px-2 w-full h-[3rem] bg-white"
-          href={"/slot"}>treatment</a
-        >
-        <a
-          class="flex items-center px-2 w-full h-[3rem] bg-white"
-          href={"/casino"}>treatment</a
-        >
-      {/each}
-    </div>
-  </aside>
+  
 </div>
 
 <style>

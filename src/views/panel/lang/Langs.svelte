@@ -5,6 +5,7 @@
   import ToastService from "$services/toast";
   import Select from "$components/Form/Select.svelte";
   import { bind } from "svelte-simple-modal";
+  import { modal } from "$services/store";
   import Alert from "$components/Alert.svelte";
   const deleteLangApprove = (langId) => {
     modal.set(

@@ -24,12 +24,12 @@
               <h3
                 class="text-sm font-semibold text-white tracking-wider uppercase"
               >
-              {$general.brand}
+              {$general?.brand}
               </h3>
 
               <div class="">
                 <p class=" px-2 pt-5 text-md tracking-tight text-gray-200 ">
-                  {$general.shortDesc}
+                  {$general?.shortDesc}
                 </p>
               </div>
             </div>
@@ -40,7 +40,7 @@
             <h3
               class="text-sm font-semibold text-white tracking-wider uppercase "
             >
-              {$translate.treatments}
+              {$translate?.treatments}
             </h3>
             <div class="grid-rows-1">
               <div class="grid grid-cols-2 ">
@@ -87,21 +87,21 @@
             <h3
               class="text-sm font-semibold text-white tracking-wider uppercase"
             >
-              {$translate.contact}
+              {$translate?.contact}
             </h3>
 
             <div class="px-2">
               <p class=" pt-5 text-md tracking-tight text-gray-200">
-                <a href="tel:{$general.phone2}">
-                  {$general.phone2}
+                <a href="tel:{$general?.phone2}">
+                  {$general?.phone2}
                 </a>
               </p>
               <p class=" pt-5 text-md tracking-tight text-gray-200 ">
-                <a href="mailto:{$general.email1}"> {$general.email1}</a>
+                <a href="mailto:{$general?.email1}"> {$general?.email1}</a>
               </p>
               <p class=" pt-5 text-md tracking-tight text-gray-200 ">
-                {$general.address1}
-                {$general.address2}
+                {$general?.address1}
+                {$general?.address2}
               </p>
             </div>
           </div>
@@ -109,18 +109,18 @@
       </div>
       <div class="mt-12 xl:mt-0">
         <h3 class="text-sm font-semibold text-white tracking-wider uppercase">
-          {$translate.language}
+          {$translate?.language}
         </h3>
         {#if $langs}
         <form class="mt-4 sm:max-w-xs">
           <fieldset class="w-full">
-            <label for="language" class="sr-only">{$translate.language}</label>
+            <label for="language" class="sr-only">{$translate?.language}</label>
             <div class="relative">
               <LangSelect
                 value={$lang}
                 change={(value) => langTrigger(value)}
                 values={$langs}
-                title={$translate.language}
+                title={$translate?.language}
                 valuesKey={"lang"}
                 valuesTitleKey={"lang"}
                 required={false}
@@ -155,7 +155,7 @@
       class="mt-8 border-t border-white/50 pt-8 md:flex md:items-center md:justify-between"
     >
       <div class="flex space-x-6 md:order-2">
-        <a href={"/" + $general.facebook} target="_blank">
+        <a href={"/" + $general?.facebook} target="_blank">
           <svg
             class="h-5"
             xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +165,7 @@
             {@html Svg.facebook}
           </svg>
         </a>
-        <a href={"/" + $general.instagram} target="_blank">
+        <a href={"/" + $general?.instagram} target="_blank">
           <svg
             class="h-5"
             xmlns="http://www.w3.org/2000/svg"
@@ -175,7 +175,7 @@
             {@html Svg.instagram}
           </svg>
         </a>
-        <a href={"/" + $general.youtube} target="_blank">
+        <a href={"/" + $general?.youtube} target="_blank">
           <svg
             class="h-6"
             xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +185,7 @@
             {@html Svg.youtube}
           </svg>
         </a>
-        <a href={$general.whatsapp} target="_blank">
+        <a href={$general?.whatsapp} target="_blank">
           <svg
             class="h-5 "
             xmlns="http://www.w3.org/2000/svg"
@@ -197,7 +197,7 @@
         </a>
       </div>
       <p class="mt-8 text-base text-white md:mt-0 md:order-1">
-        {$general.copright}
+        {$general?.copright}
       </p>
     </div>
   </div>

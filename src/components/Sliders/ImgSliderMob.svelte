@@ -26,10 +26,6 @@
       <SplideSlide>
         <Card
           treatment={treatment}
-          title={treatment.title}
-          titleClass="text-light-300 "
-          iconColor="#374151"
-          description="Competently parallel task researched data and process improvements."
         />
       </SplideSlide>
     {/each}

@@ -17,7 +17,7 @@ console.log(sliders,"sfsf")
 <div class="relative">
   
     <img
-      class="min-h-[calc(100vh-160px)] w-auto object-cover  "
+      class="min-h-[calc(100vh-160px)] w-auto object-cover"
       src={slider.backgroundBanner}
       alt=""
     />

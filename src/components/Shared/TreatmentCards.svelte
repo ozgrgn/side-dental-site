@@ -1,13 +1,15 @@
 <script>
   import LightButton from "$components/Buttons/LightButton.svelte";
   import Card from "$components/Shared/Card.svelte";
+  import TreatmentsSlider from "$components/Sliders/TreatmentsSlider.svelte";
   import { translate } from "../../services/store";
 
 export let customClass
 export let spot;
   export let header;
   export let treatments
-</script>
+  console.log(treatments,"treatmenstcarddaki treatment")
+  </script>
 
 <div class="container mx-4 {customClass}">
   <div class="flex justify-between w-full">
@@ -20,11 +22,11 @@ export let spot;
     <!-- <div class="flex flex-col justify-center">
     <LightButton customClass="h-12">{$translate.allTreatments}</LightButton></div> -->
   </div>
-<div class="py-10 grid grid-cols-4 lg:gap-6 gap-2">
+<div class="py-10">
 {#if treatments}
-{#each treatments as treatment }
-<Card treatment={treatment}/>
-{/each}
+
+<TreatmentsSlider treatments={treatments}/>
+
 {/if}
 </div>
 </div>
