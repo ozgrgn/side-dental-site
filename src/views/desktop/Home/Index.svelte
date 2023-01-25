@@ -76,7 +76,7 @@
       {/if}
     </div>
 
-    <div class="pt-56 xl:pt-32 "/>
+    <div class="mt-64 xl:mt-32 "/>
     <div class="container mx-auto">
     {#if homes}
       <Treatments

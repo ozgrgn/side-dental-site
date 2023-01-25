@@ -26,7 +26,7 @@
           title={treatment.title}
           titleClass="text-light-300 "
           iconColor="#374151"
-          description="Competently parallel task researched data and process improvements."
+          description={treatment.shortDesc.length>70?treatment.shortDesc.slice(0,70) +"...":treatment.shortDesc}
         />
       </SplideSlide>
     {/each}

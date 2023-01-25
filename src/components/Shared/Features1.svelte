@@ -17,8 +17,8 @@
     </svg>
   </div>
   <div class="col-span-3 flex flex-col ">
-    <h2 class="text-2xl md:text-lg  {titleClass} ">{title}</h2>
-    <p class="text-md w-64 font-thin pt-1">
+    <h2 class="text-[1.125rem] leading-5  {titleClass} ">{title}</h2>
+    <p class="text-md w-52 font-thin pt-1 leading-5">
         {description}
     </p>
   </div>
