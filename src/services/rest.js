@@ -318,8 +318,44 @@ const getAdmins = (limit, skip, customQuery = {}) => {
   return Http.get(`${ENV.API_URL}/admin`, { ...data });
 };
 
-const getOrganizers = () => {
-  return Http.get(`${ENV.API_URL}/admin/organizers`);
+
+// Reviews
+const getReviews = (limit, skip, lang, isActive, treatment, general) => {
+  let data = {};
+  if (limit) {
+    data.limit = limit;
+  }
+  if (skip) {
+    data.skip = skip;
+  }
+  if (lang) {
+    data.lang = lang;
+  }
+  if (isActive) {
+    data.isActive = isActive;
+  }
+  if (treatment) {
+    data.treatment = treatment;
+  }
+  if (general) {
+    data.general = general;
+  }
+  return Http.get(`${ENV.API_URL}/review`, { ...data });
+};
+const addReview = (data) => {
+  return Http.post(`${ENV.API_URL}/review`, data);
+};
+
+const updateReview = (reviewId, data) => {
+  return Http.put(`${ENV.API_URL}/review/${reviewId}`, {
+    review: data,
+  });
+};
+const getReview = (reviewId) => {
+  return Http.get(`${ENV.API_URL}/review/${reviewId}`);
+};
+const deleteReview = (reviewId) => {
+  return Http.delete(`${ENV.API_URL}/review/${reviewId}`);
 };
 const getAdmin = (adminId) => {
   return Http.get(`${ENV.API_URL}/admin/${adminId}`);
@@ -371,7 +407,6 @@ export default {
   updateAdmin,
   updateAdminStatusById,
   getAdmins,
-  getOrganizers,
   getAdmin,
   deleteAdmin,
 
@@ -424,17 +459,23 @@ export default {
   addContact,
   updateContact,
   deleteContact,
-  
+
   //general
   getGenerals,
   getGeneral,
   addGeneral,
   updateGeneral,
   deleteGeneral,
-    //translate
-    getTranslates,
-    getTranslate,
-    addTranslate,
-    updateTranslate,
-    deleteTranslate,
+  //translate
+  getTranslates,
+  getTranslate,
+  addTranslate,
+  updateTranslate,
+  deleteTranslate,
+  //review
+  getReviews,
+  getReview,
+  addReview,
+  updateReview,
+  deleteReview,
 };

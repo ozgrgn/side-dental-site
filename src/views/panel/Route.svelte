@@ -38,6 +38,9 @@
   import Translates from "./translate/Translates.svelte";
   import { modal } from "../../services/store";
   import Modal from "svelte-simple-modal";
+  import UpdateReview from "./reviews/UpdateReview.svelte";
+  import CreateReview from "./reviews/CreateReview.svelte";
+  import Reviews from "./reviews//Reviews.svelte";
   // let userAuthSubscription = user.subscribe(async (auth) => {
   //   if (!auth) {
   //     navigate("/auth/login");
@@ -66,6 +69,7 @@
   //   userAuthSubscription;
   // });
 </script>
+
 <Modal show={$modal} />
 <div>
   <!-- <Sidebar /> -->
@@ -106,8 +110,7 @@
         <Route path="create-about" component={CreateAbout} />
 
         <Route path="abouts" component={Abouts} />
-      
-        
+
         <!-- Tedavi-Sayfası -->
         <Route
           path="update-treatmentpage/:treatments_pageId"
@@ -130,7 +133,10 @@
 
         <Route path="generals" component={Generals} />
         <!-- Çeviriler -->
-        <Route path="update-translate/:translateId" component={UpdateTranslate} />
+        <Route
+          path="update-translate/:translateId"
+          component={UpdateTranslate}
+        />
 
         <Route path="create-translate" component={CreateTranslate} />
 
@@ -151,6 +157,15 @@
         <Route path="create-treatment" component={CreateTreatment} />
 
         <Route path="treatments" component={Treatments} />
+           <!-- Reviews -->
+           <Route
+           path="update-review/:reviewId"
+           component={UpdateReview}
+         />
+ 
+         <Route path="create-review" component={CreateReview} />
+ 
+         <Route path="reviews" component={Reviews} />
       </Router>
 
       <FooterAdmin />

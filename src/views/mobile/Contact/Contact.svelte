@@ -38,14 +38,15 @@
       </div>
 
       <div
-      class="text-6xl text-white/90 tracking-tight w-fit pt-8 border-b-4 border-light-300/80 h-28 "
+        class="text-6xl text-white/90 tracking-tight w-fit pt-8 border-b-4 border-light-300/80 h-28 "
       >
         <span class="">{contact?.header}</span>
       </div>
-      <p class="text-white/90 pt-2 md:pt-8">
-        {contact?.text}
-      </p>
-    </div>{/if}
+      <div class="relative text-white/90 pt-2 md:pt-8">
+        {@html contact?.text}
+      </div>
+    </div>
+  {/if}
 </div>
 
 <div class="container px-5">
@@ -174,11 +175,11 @@
 </div>
 <div class="relative pb-16 bg-dark-100">
   {#if homes}
-  <Map
-    title={true}
-    mapBox="mapForm"
-    spot={homes[0].map_spot}
-    header={homes[0].map_header}
-  />
+    <Map
+      title={true}
+      mapBox="mapForm"
+      spot={homes[0].map_spot}
+      header={homes[0].map_header}
+    />
   {/if}
 </div>

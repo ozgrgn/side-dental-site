@@ -34,11 +34,12 @@
       >
         <span class="">{contact.header}</span>
       </div>
-      <p class="text-white/90 w-1/2 pt-8">
-        {contact.text}
-      </p>
+      <div class="relative text-white/90 w-1/2 pt-8 z-[1000]">
+        {@html contact.text}
+      </div>
     </div>{/if}
 </div>
+
 
 <div class="container mx-auto">
   <div class="flex flex-col">

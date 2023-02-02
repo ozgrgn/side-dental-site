@@ -134,6 +134,18 @@
                 Tedavi
               </a>
               <a
+              class="text-white font-semibold text-sm {$location.pathname.indexOf(
+                'review'
+              ) !== -1
+                ? 'hover:text-white text-base'
+                : 'text-white/80 hover:text-white'}"
+              href="/panel/reviews"
+              use:link
+              on:click={() => (navbarOpen = false)}
+            >
+              Yorumlar
+            </a>
+              <a
                 class="text-white font-semibold text-sm {$location.pathname.indexOf(
                   'contact'
                 ) !== -1
