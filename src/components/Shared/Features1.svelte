@@ -7,14 +7,16 @@
 </script>
 <div class=" grid grid-cols-5 gap-2 pt-6">
   <div class="col-span-1">
+    <div class="">
     <svg
-      class="h-fit "
+      class="h-full "
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 96 96"
       fill={iconColor}
     >
       {@html icon}
     </svg>
+  </div>
   </div>
   <div class="col-span-3 flex flex-col ">
     <h2 class="text-[1.125rem] leading-5  {titleClass} ">{title}</h2>

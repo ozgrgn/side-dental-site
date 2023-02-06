@@ -19,8 +19,10 @@
     <span class="text-light-300">{spot}</span> {header}
   </h4>
   <div class="flex flex-col lg:flex-row">
-    <img class="lg:w-3/5 shadow-xl pt-5" src="assets/img/map.png" alt="" />
+    <a class="lg:w-3/5" href="https://goo.gl/maps/nZDjBCZ1cJJmH5iz5">
 
+    <img class="w-full shadow-xl pt-5" src="assets/img/map.png" alt="" />
+    </a>
     {#if mapBox=="mapWorking"}
  <MapWorking boxHeader={boxHeader} boxDesc={boxDesc}/> 
  {:else}

@@ -1,6 +1,5 @@
 <!-- App.svelte -->
 <script>
-  import { SvelteToast } from "@zerodevx/svelte-toast";
   import { Route, Router, navigate } from "svelte-navigator";
   import {
     lang,
@@ -17,6 +16,7 @@
   import { onDestroy } from "svelte";
   import RestService from "./services/rest";
   import { isDesktop } from "$services/utils";
+
 
   const getGenerals = async () => {
     let response = await RestService.getGenerals(undefined, undefined, $lang);
@@ -90,7 +90,7 @@
 </script>
 
 
-<SvelteToast />
+
 
 <Router primary={false}>
   <Route path="auth/*auth" component={Auth} />

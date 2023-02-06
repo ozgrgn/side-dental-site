@@ -1,22 +1,23 @@
 <script>
   import Footer from "$components/Footers/Footer.svelte";
   import { Route, Router } from "svelte-navigator";
-  import Treatments from "../panel/treatment/Treatments.svelte";
   import About from "./About/About.svelte";
   import Contact from "./Contact/Contact.svelte";
   import Header from "./Header/Header.svelte";
   import Index from "./Home/Index.svelte";
+  import {modal1} from "$services/store"
+
   import {
     lang,
-    langs,
-    user,
     general,
     translate,
     treatments,
   } from "$services/store";
+  import { Modal } from "svelte-simple-modal";
+  import Treatments from "./Treatments/Treatments.svelte";
   </script>
 {#if treatments && general && translate && lang}
-
+<Modal show={$modal1} />
   <div class="min-h-screen">
     <Header />
     <div class=" mx-auto w-full relative ">

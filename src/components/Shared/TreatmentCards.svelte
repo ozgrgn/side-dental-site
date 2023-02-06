@@ -1,8 +1,5 @@
 <script>
-  import LightButton from "$components/Buttons/LightButton.svelte";
-  import Card from "$components/Shared/Card.svelte";
   import TreatmentsSlider from "$components/Sliders/TreatmentsSlider.svelte";
-  import { translate } from "../../services/store";
 
 export let customClass
 export let spot;

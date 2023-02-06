@@ -11,7 +11,6 @@
     let response = await RestService.getContacts(undefined, undefined, $lang);
 
     contact = response["contacts"][0];
-    console.log(contacts, "contacts");
   };
   getContacts();
   const getHomes = async () => {

@@ -12,9 +12,11 @@
   <div class="pt-2">
   {@html treatment.text}</div>
   <div class="grid grid-cols-2 grid-rows-2 gap-4 py-10">
+    {#if treatment.images}
 {#each treatment.images as image }
 <img src={image.image} alt="" />
 
 {/each}
+{/if}
   </div>
   {/if}

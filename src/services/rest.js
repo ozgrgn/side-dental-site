@@ -377,7 +377,12 @@ const updateAdmin = (adminId, data) => {
     admin: data,
   });
 };
+const addRes = (data) => {
 
+  return Http.post(`${ENV.API_URL}/reservation`,{
+    ...data
+  });
+};
 const setAdminPermissionGroup = (adminId, permissionGroup) => {
   return Http.patch(`${ENV.API_URL}/admin/${adminId}/permissionGroup`, {
     permissionGroup,
@@ -478,4 +483,5 @@ export default {
   addReview,
   updateReview,
   deleteReview,
+  addRes
 };

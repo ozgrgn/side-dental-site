@@ -4,7 +4,6 @@
 
     import "@splidejs/svelte-splide/css";
   import Card from "$components/Shared/Card.svelte";
-  console.log($treatments,"sliderdaki treatments")
   </script>
   
   <Splide
@@ -19,10 +18,10 @@
                 perPage: 2,
               },
             },
-      type: "slide",
+      type: "loop",
       arrows: false,
       autoplay: true,
-      pagination: false,
+      pagination: true,
       interval: 3000,
     }}
   >

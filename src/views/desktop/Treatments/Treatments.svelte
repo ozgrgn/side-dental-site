@@ -19,14 +19,49 @@
   let phone;
   let treatment;
   let treatmentPage;
-
+  let contact;
+  let formStatus = false;
+  let warn = false;
+  let sent;
   const getTreatment = async (perma) => {
     let response = await RestService.getTreatmentViaPerma(perma);
     treatment = response["treatment"];
     console.log(treatment, "treasssstments");
   };
   $: getTreatment(perma);
+  const addRes = async () => {
+    if (!name || !phone) {
+      warn = true;
+      return;
+    }
+    warn = false;
+    formStatus = true;
 
+    let date = new Date().toLocaleString("tr-TR");
+    let bodyData = {
+      lang: $lang,
+      name,
+      date,
+      email,
+      undefined,
+      treatment:treatment._id,
+      phone,
+      message,
+      undefined,
+    };
+    let addResResponse = await RestService.addRes(bodyData);
+    if (addResResponse && addResResponse["status"]) {
+      sent = true;
+    }
+    console.log(addResResponse, "addResResponse");
+  };
+  const getContacts = async () => {
+    let response = await RestService.getContacts(undefined, undefined, $lang);
+
+    contact = response["contacts"][0];
+    console.log(contact, "contacts");
+  };
+  getContacts();
   const getTreatmentPages = async () => {
     let response = await RestService.getTreatmentPages(
       undefined,
@@ -144,30 +179,52 @@
       >
         {$translate.book_an_appointment}
       </div>
+      <div
+        class="alert alert-success contact__msg {formStatus == true
+          ? ''
+          : 'hidden'}"
+        role="alert"
+      >
+        {contact?.description}
+      </div>
+      <div
+        class="alert-warn text-lg contact__msg {warn == true ? '' : 'hidden'}"
+        role="alert"
+      >
+        {name ? "" : $translate.name_required}
+        {phone ? "" : $translate.phone_required}
+      </div>
       <div class="flex gap-4 relative w-full mt-4 flex flex-col">
         <Input
           customClass="h-12 text-[1rem] placeholder:text-[1rem] drop-shadow shadow-lg"
           bind:value={name}
+          type="text"
+          name="name"
           placeholder={$translate.name}
-          required={true}
+          autocomplete="name"
         />
         <Input
           customClass="h-12 text-[1rem] placeholder:text-[1rem] drop-shadow shadow-lg"
           bind:value={email}
           placeholder={$translate.mail}
-          required={true}
           type="email"
+          autocomplete="email"
         />
         <Input
           customClass="h-12 text-[1rem] placeholder:text-[1rem] drop-shadow shadow-lg"
           bind:value={phone}
+          type="tel"
+          name="tel"
           placeholder={$translate.phone}
-          required={true}
+          autocomplete="tel"
         />
 
         <button
-          class="h-12 bg-light-300 drop-shadow shadow-lg text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-          type="button"
+        class="h-12 mt-2 bg-light-300 drop-shadow shadow-lg text-white active:bg-dark-300 disabled:bg-dark-300/30 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        type="button"
+        disabled={formStatus}
+          on:click={() => addRes()}
+
         >
           {$translate.send}
         </button>
@@ -175,3 +232,27 @@
     </div>
   </div>
 </div>
+<style>
+
+  .alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    text-align: center;
+  }
+  .alert {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+  }
+  .alert-warn {
+
+    text-align: center;
+    position: relative;
+    color: red;
+  }
+</style>

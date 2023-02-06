@@ -1,5 +1,7 @@
 <script>
-  import { translate } from "$services/store";
+  import Popup from "$components/Popup.svelte";
+  import { modal1, translate } from "$services/store";
+  import { bind } from "svelte-simple-modal";
 
   export let treatment;
 </script>
@@ -27,6 +29,12 @@
       </p>
       <div class="flex justify-center">
         <button
+        on:click={() => {
+          modal1.set(
+           bind (Popup, {treatment:treatment._id
+            })
+          );
+        }}
           class="absolute md:hidden h-8 bottom-2 bg-white drop-shadow shadow-2xl text-light-300 active:bg-dark-300 text-xs font-bold uppercase px-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
         >

@@ -7,6 +7,7 @@
   import Top from "./Top.svelte";
   import LangSelect from "$components/Form/LangSelect.svelte";
   import { langs, lang, translate, general } from "../../../services/store";
+  import { Modal } from "svelte-simple-modal";
   let y;
   $: removeSidebar(y);
 

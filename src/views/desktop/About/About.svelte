@@ -30,20 +30,16 @@
         {about.about_title}
       </div>
     </div>
-    <div class="grid lg:grid-cols-3 pt-10 gap-12 h-full">
+    <div class="grid lg:grid-cols-2 pt-10 gap-20 h-full">
       <div class="flex flex-col gap-4 h-full justify-around ">
         {@html about.about_left}
       </div>
-      <div
-        class="hidden lg:flex lg:flex-col lg:gap-4 lg:h-full lg:justify-around "
-      >
-        {@html about.about_right}
-      </div>
-      <div class="rounded-xl">
+    
+      <div class="rounded-xl flex justify-center">
         <ImgSlider
-          perPage="1"
+          perPage=1
           {images}
-          customClass="h-64 w-full object-cover rounded-xl"
+          customClass="h-full w-auto object-fit rounded-xl"
         />
       </div>
     </div>
@@ -52,9 +48,9 @@
   <div class=" bg-transparent">
     <div class="py-20 container mx-auto">
       <ImgSlider
-        perPage="7"
+        perPage=5
         images={logos}
-        customClass="object-cover rounded-xl w-full"
+        customClass="object-cover px-10 rounded-xl w-full"
       />
     </div>
 

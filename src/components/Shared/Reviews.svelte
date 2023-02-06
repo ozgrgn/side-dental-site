@@ -22,7 +22,7 @@
           aria-label="My Favorite Images"
           options={{
             arrows: false,
-            type: "loop",
+            type: "slide",
             pagination: true,
             perPage: 3,
             breakpoints: {
@@ -91,11 +91,7 @@
                             ? 'w-4/5'
                             : 'w-full'}"
                         />
-                        <img
-                          style="width:85px"
-                          src="assets/images/reviews/stars.svg"
-                          alt=""
-                        />
+                   
                       </div>
                       <div class="review-date hidden xl:block">
                         {review.reviewDate}

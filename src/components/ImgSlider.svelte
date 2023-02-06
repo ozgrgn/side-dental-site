@@ -4,7 +4,7 @@
   export let images;
   console.log(images,"iamrgewr")
   export let customClass;
-  export let perPage
+  export let perPage=4
   </script>
   
   <Splide

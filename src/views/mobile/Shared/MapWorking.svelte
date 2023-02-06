@@ -1,6 +1,8 @@
 <script>
+  import Popup from "$components/Popup.svelte";
+  import { bind } from "svelte/internal";
   import Svg from "../../../assets/svg.json";
-  import {translate,general } from "../../../services/store";
+  import {translate,general, modal1 } from "../../../services/store";
 
   export let boxHeader;
   export let boxDesc;
@@ -150,7 +152,9 @@
           <div
             class="bg-white w-16 h-6 mb-2 text-center flex flex-col justify-center rounded-md text-sm text-light-300"
           >
-            <div class="flex justify-center">
+            <div class="flex justify-center"
+     
+            >
               {$translate.book} <svg
                 class="h-3 w-3 mt-[0.2rem] ml-1"
                 fill="#bc74a5"

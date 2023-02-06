@@ -17,8 +17,47 @@
   let name;
   let email;
   let phone;
+  let message;
+
   let treatment;
   let treatmentPage;
+  let contact;
+  let formStatus = false;
+  let warn = false;
+  let sent;
+  const getContacts = async () => {
+    let response = await RestService.getContacts(undefined, undefined, $lang);
+
+    contact = response["contacts"][0];
+    console.log(contact, "contacts");
+  };
+  getContacts();
+  const addRes = async () => {
+    if (!name || !phone) {
+      warn = true;
+      return;
+    }
+    warn = false;
+    formStatus = true;
+
+    let date = new Date().toLocaleString("tr-TR");
+    let bodyData = {
+      lang: $lang,
+      name,
+      date,
+      email,
+      undefined,
+      treatment:treatment._id,
+      phone,
+      message,
+      undefined,
+    };
+    let addResResponse = await RestService.addRes(bodyData);
+    if (addResResponse && addResResponse["status"]) {
+      sent = true;
+    }
+    console.log(addResResponse, "addResResponse");
+  };
 
   const getTreatment = async (perma) => {
     let response = await RestService.getTreatmentViaPerma(perma);
@@ -53,36 +92,37 @@
   {/if}
 </div>
 <div class="container px-5">
+  <div
+  class="px-5 right-menu h-fit bg-light-300 rounded-md  z-20"
+>
+  <div class="text-4xl text-white w-16 border-b-4 border-white m-8 pt-5  h-20">
+    {#if $translate}
+      <span class="-ml-1 " />{$translate.treatments}
+    {/if} 
+  </div>
+  <div class="flex flex-col mx-8 text-white text-lg p-4 pt-0 ">
+    {#if $treatments}
+      {#each $treatments as t}
+        <a
+          use:link
+          href="/treatments/{t.perma}"
+          class="relative border-b border-white/50 font-semibold py-2 mx-2  last:border-none hover:before:content-[''] hover:before:absolute hover:before:h-[0.15rem] hover:before:bg-white hover:before:w-3 hover:before:-left-5 hover:before:top-[1.4rem] {perma ==
+          t.perma
+            ? "before:content-[''] before:absolute before:h-[0.15rem] before:bg-white before:w-3 before:-left-5 before:top-[1.4rem]"
+            : ''}"
+        >
+          {t.title}
+        </a>
+      {/each}
+    {/if}
+  </div>
+</div>
   <div class="pt-10 ">
     <TreatmentsDetail {treatment} />
   </div>
 
   <div class="flex flex-col">
-    <div
-      class="px-5 right-menu h-fit bg-light-300 rounded-md  z-20"
-    >
-      <div class="text-4xl text-white w-16 border-b-4 border-white m-8 h-14">
-        {#if $translate}
-          <span class="-ml-1" />{$translate.treatments}
-        {/if}
-      </div>
-      <div class="flex flex-col mx-8 text-white text-lg pb-4 ">
-        {#if $treatments}
-          {#each $treatments as t}
-            <a
-              use:link
-              href="/treatments/{t.perma}"
-              class="relative border-b border-white/50 font-semibold py-2 mx-2  last:border-none hover:before:content-[''] hover:before:absolute hover:before:h-[0.15rem] hover:before:bg-white hover:before:w-3 hover:before:-left-5 hover:before:top-[1.4rem] {perma ==
-              t.perma
-                ? "before:content-[''] before:absolute before:h-[0.15rem] before:bg-white before:w-3 before:-left-5 before:top-[1.4rem]"
-                : ''}"
-            >
-              {t.title}
-            </a>
-          {/each}
-        {/if}
-      </div>
-    </div>
+
     <div
       class=" my-10 border-8 border-dark-300/10 rounded-md flex flex-col p-8"
     >
@@ -144,34 +184,84 @@
       >
         {$translate.book_an_appointment}
       </div>
+      <form class="contact__form">
+        <div
+          class="alert alert-success contact__msg {formStatus == true
+            ? ''
+            : 'hidden'}"
+          role="alert"
+        >
+         {contact?.description}
+        </div>
+        <div
+          class="alert-warn text-lg contact__msg {warn == true ? '' : 'hidden'}"
+          role="alert"
+        >
+          {name?"":$translate.name_required}
+          {phone?"":$translate.phone_required}
+        </div>
       <div class="flex gap-4 relative w-full mt-4 flex flex-col">
         <Input
           customClass="h-12 text-[1rem] placeholder:text-[1rem] drop-shadow shadow-lg"
           bind:value={name}
+          type="text"
+          name="name"
           placeholder={$translate.name}
-          required={true}
+          autocomplete="name"
         />
         <Input
           customClass="h-12 text-[1rem] placeholder:text-[1rem] drop-shadow shadow-lg"
           bind:value={email}
           placeholder={$translate.mail}
-          required={true}
           type="email"
+          autocomplete="email"
+
         />
         <Input
           customClass="h-12 text-[1rem] placeholder:text-[1rem] drop-shadow shadow-lg"
           bind:value={phone}
+          type="tel"
+          name="tel"
           placeholder={$translate.phone}
-          required={true}
+          autocomplete="tel"
         />
 
         <button
-          class="h-12 bg-light-300 drop-shadow shadow-lg text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-          type="button"
+        class="h-12 mt-2 bg-light-300 drop-shadow shadow-lg text-white active:bg-dark-300 disabled:bg-dark-300/30 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        type="button"
+        disabled={formStatus}
+          on:click={() => addRes()}
+
         >
           {$translate.send}
         </button>
       </div>
+      </form>
     </div>
   </div>
 </div>
+<style>
+
+  .alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    text-align: center;
+  }
+  .alert {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+  }
+  .alert-warn {
+
+    text-align: center;
+    position: relative;
+    color: red;
+  }
+
+</style>

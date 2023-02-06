@@ -3,7 +3,6 @@
   import { treatments } from "../../services/store";
 
   import Features1 from "../Shared/Features1.svelte";
-  import Svg from "../../assets/svg.json";
   import "@splidejs/svelte-splide/css";
 </script>
 
@@ -11,7 +10,7 @@
   aria-label="My Favorite Images"
   options={{
     perPage: 2,
-    type: "slide",
+    type: "slider",
     arrows: false,
     autoplay: true,
     pagination: false,

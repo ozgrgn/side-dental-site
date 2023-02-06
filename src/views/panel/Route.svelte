@@ -41,6 +41,7 @@
   import UpdateReview from "./reviews/UpdateReview.svelte";
   import CreateReview from "./reviews/CreateReview.svelte";
   import Reviews from "./reviews//Reviews.svelte";
+  import { SvelteToast } from "@zerodevx/svelte-toast";
   // let userAuthSubscription = user.subscribe(async (auth) => {
   //   if (!auth) {
   //     navigate("/auth/login");
@@ -69,6 +70,7 @@
   //   userAuthSubscription;
   // });
 </script>
+<SvelteToast />
 
 <Modal show={$modal} />
 <div>

@@ -10,7 +10,7 @@
     let response = await RestService.getContacts(undefined, undefined, $lang);
 
     contact = response["contacts"][0];
-    console.log(contacts, "contacts");
+    console.log(contact, "contacts");
   };
   getContacts();
 </script>
@@ -54,11 +54,7 @@
       {/if}
     </div>
     <div class="flex justify-center">
-      {#if contact}
-        <p class="lg:w-1/2 px-10 text-center">
-          {contact.description}
-        </p>
-      {/if}
+
     </div>
     <div class="flex justify-center my-10">
       <div class="lg:w-2/3 grid grid-cols-4 gap-1 h-32 ">

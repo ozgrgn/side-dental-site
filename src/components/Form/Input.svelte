@@ -11,6 +11,8 @@
   export let required;
   export let type;
   export let disabled;
+  export let autocomplete=undefined;
+
   export let placeholder = "Please type something";
   export let customClass = "";
   export let change = () => {};
@@ -47,6 +49,8 @@
   class:field-success={$validity.valid}
   use:validate={value}
   {disabled}
+  {autocomplete}
+
 />
 
 {#if $validity.dirty && !$validity.valid}

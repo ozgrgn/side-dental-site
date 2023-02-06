@@ -51,7 +51,7 @@
                     <li>
                         <a
                           use:link
-                          href="e"
+                          href="/treatments/{$treatments[i].perma}"
                           class="text-base text-gray-200 hover:text-white"
                         >
                           {$treatments[i].title}
@@ -67,7 +67,7 @@
                   <li>
                       <a
                         use:link
-                        href="e"
+                        href="/treatments/{$treatments[i+4].perma}"
                         class="text-base text-gray-200 hover:text-white"
                       >
                         {$treatments[i+4].title}
