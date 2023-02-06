@@ -46,7 +46,7 @@
       undefined,
       treatment:treatment._id,
       phone,
-      message,
+      undefined,
       undefined,
     };
     let addResResponse = await RestService.addRes(bodyData);
