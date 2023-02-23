@@ -9,7 +9,6 @@
     translate,
     treatments,
   } from "./services/store";
-  import AdminRoute from "./views/panel/Route.svelte";
   import DesktopRoutes from "./views/desktop/Route.svelte";
   import MobileRoutes from "./views/mobile/Route.svelte";
   import Auth from "./views/auth/Auth.svelte";
