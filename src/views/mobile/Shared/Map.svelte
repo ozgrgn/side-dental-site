@@ -21,7 +21,7 @@
   <div class="flex flex-col lg:flex-row">
     <a class="lg:w-3/5" href="https://goo.gl/maps/nZDjBCZ1cJJmH5iz5">
 
-    <img class="w-full shadow-xl pt-5" src="assets/img/map.png" alt="" />
+    <img class="w-full shadow-xl pt-5" src="assets/img/map.webp" alt="" />
     </a>
     {#if mapBox=="mapWorking"}
  <MapWorking boxHeader={boxHeader} boxDesc={boxDesc}/> 
