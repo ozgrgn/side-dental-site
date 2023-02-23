@@ -31,7 +31,7 @@
     contact = response["contacts"][0];
     console.log(contact, "contacts");
   };
-  getContacts();
+  $: getContacts($lang);
   const addRes = async () => {
     if (!name || !phone) {
       warn = true;
@@ -64,7 +64,7 @@
     treatment = response["treatment"];
     console.log(treatment, "treasssstments");
   };
-  $: getTreatment(perma);
+  $: getTreatment(perma,$lang);
 
   const getTreatmentPages = async () => {
     let response = await RestService.getTreatmentPages(
@@ -74,7 +74,7 @@
     );
     treatmentPage = response["treatmentPages"][0];
   };
-  getTreatmentPages();
+ $: getTreatmentPages($lang);
 </script>
 
 <div class="relative bg-dark-300 h-96 w-full z-10">

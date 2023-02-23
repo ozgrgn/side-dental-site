@@ -11,7 +11,7 @@
     contact = response["contacts"][0];
     console.log(contact, "contacts");
   };
-  getContacts();
+ $: getContacts($lang);
   let formStatus = false;
   let warn = false;
   let name;

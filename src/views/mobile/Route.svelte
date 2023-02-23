@@ -6,7 +6,6 @@
   import Header from "./Header/Header.svelte";
   import Index from "./Home/Index.svelte";
   import {modal1} from "$services/store"
-
   import {
     lang,
     general,

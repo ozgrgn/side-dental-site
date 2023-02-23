@@ -14,7 +14,7 @@
     logos = about.logos;
     console.log(logos, "srgfere");
   };
-  getAbouts();
+  $:  getAbouts($lang);
 
 
 </script>

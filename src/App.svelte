@@ -17,28 +17,30 @@
   import RestService from "./services/rest";
   import { isDesktop } from "$services/utils";
 
+  $: {reload($lang)}
 
+  const reload = async () => {
+
+  getLangs();
+  getGenerals();
+  getTranslates();
+  getTreatments();
+  }
   const getGenerals = async () => {
     let response = await RestService.getGenerals(undefined, undefined, $lang);
 
     general.set(response["generals"][0]);
-    console.log($general, "general");
   };
-  getGenerals();
   const getTranslates = async () => {
     let response = await RestService.getTranslates(undefined, undefined, $lang);
     translate.set(response["translates"][0]);
-    console.log($translate, "translate");
 
   };
-  getTranslates();
 
   const getLangs = async () => {
     let response = await RestService.getLangs(undefined, undefined);
     langs.set(response["langs"]);
-    console.log($langs, "langs");
   };
-  getLangs();
   const getTreatments = async () => {
     let response = await RestService.getTreatments(
       undefined,
@@ -48,9 +50,7 @@
       undefined
     );
     treatments.set(response["treatments"]);
-    console.log($treatments, "treatments");
   };
-  getTreatments();
   if (
     window.location.pathname == "/auth/login" ||
     window.location.pathname == "/panel" ||
@@ -95,7 +95,6 @@
 <Router primary={false}>
   <Route path="auth/*auth" component={Auth} />
 
-  <Route path="panel/*" component={AdminRoute} />
   {#if isDesktop()}
     <Route component={DesktopRoutes} />
   {:else}

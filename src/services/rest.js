@@ -138,7 +138,7 @@ const deleteAbout = (aboutId) => {
 };
 
 // Treatments
-const getTreatments = (limit, skip, lang, isActive, hp) => {
+const getTreatments = (limit, skip, lang, isActive, hp, perma) => {
   let data = {};
   if (limit) {
     data.limit = limit;
@@ -154,6 +154,9 @@ const getTreatments = (limit, skip, lang, isActive, hp) => {
   }
   if (hp) {
     data.hp = hp;
+  }
+    if (perma) {
+    data.perma = perma;
   }
   return Http.get(`${ENV.API_URL}/treatment`, { ...data });
 };

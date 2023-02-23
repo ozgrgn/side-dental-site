@@ -15,7 +15,7 @@
     let response = await RestService.getSliders(undefined, undefined, $lang);
     sliders = response["sliders"];
   };
-  getSliders();
+  $: getSliders($lang);
 
   const getHomes = async () => {
     let response = await RestService.getHomes(undefined, undefined, $lang);
@@ -23,7 +23,7 @@
     homes = response["homes"];
     console.log(homes, "homes");
   };
-  getHomes();
+  $: getHomes($lang);
 
   const getTreatments = async () => {
     let response = await RestService.getTreatments(
@@ -36,7 +36,7 @@
     treatments = response["treatments"];
     console.log(treatments, "treatments");
   };
-  getTreatments();
+  $: getTreatments($lang);
 </script>
 
 {#if sliders}

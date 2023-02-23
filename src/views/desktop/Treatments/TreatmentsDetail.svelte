@@ -1,5 +1,5 @@
 <script>
-    export let treatment;
+   export let treatment;
     console.log(treatment,"dsfdfdfd")
 </script>
 {#if treatment}

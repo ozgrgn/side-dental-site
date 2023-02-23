@@ -23,12 +23,18 @@
   let formStatus = false;
   let warn = false;
   let sent;
-  const getTreatment = async (perma) => {
-    let response = await RestService.getTreatmentViaPerma(perma);
-    treatment = response["treatment"];
-    console.log(treatment, "treasssstments");
+  const getTreatment = async (perma, lang) => {
+    let response = await RestService.getTreatments(
+      undefined,
+      undefined,
+      lang,
+      true,
+      undefined,
+      perma
+    );
+    treatment = response["treatments"] && response["treatments"][0];
   };
-  $: getTreatment(perma);
+  $: getTreatment(perma, $lang);
   const addRes = async () => {
     if (!name || !phone) {
       warn = true;
@@ -44,7 +50,7 @@
       date,
       email,
       undefined,
-      treatment:treatment._id,
+      treatment: treatment._id,
       phone,
       undefined,
       undefined,
@@ -61,7 +67,7 @@
     contact = response["contacts"][0];
     console.log(contact, "contacts");
   };
-  getContacts();
+  $: getContacts($lang);
   const getTreatmentPages = async () => {
     let response = await RestService.getTreatmentPages(
       undefined,
@@ -70,7 +76,7 @@
     );
     treatmentPage = response["treatmentPages"][0];
   };
-  getTreatmentPages();
+  $: getTreatmentPages($lang);
 </script>
 
 <div class="relative bg-dark-300 h-96 w-full z-10">
@@ -220,11 +226,10 @@
         />
 
         <button
-        class="h-12 mt-2 bg-light-300 drop-shadow shadow-lg text-white active:bg-dark-300 disabled:bg-dark-300/30 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        type="button"
-        disabled={formStatus}
+          class="h-12 mt-2 bg-light-300 drop-shadow shadow-lg text-white active:bg-dark-300 disabled:bg-dark-300/30 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+          disabled={formStatus}
           on:click={() => addRes()}
-
         >
           {$translate.send}
         </button>
@@ -232,8 +237,8 @@
     </div>
   </div>
 </div>
-<style>
 
+<style>
   .alert-success {
     color: #155724;
     background-color: #d4edda;
@@ -250,7 +255,6 @@
     border-radius: 0.25rem;
   }
   .alert-warn {
-
     text-align: center;
     position: relative;
     color: red;

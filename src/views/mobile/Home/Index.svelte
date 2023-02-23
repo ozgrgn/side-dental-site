@@ -16,7 +16,7 @@
     let response = await RestService.getSliders(undefined, undefined, $lang);
     sliders = response["sliders"];
   };
-  getSliders();
+  $: getSliders($lang);
 
   const getHomes = async () => {
     let response = await RestService.getHomes(undefined, undefined, $lang);
@@ -24,7 +24,7 @@
     homes = response["homes"];
     console.log(homes, "homes");
   };
-  getHomes();
+  $: getHomes($lang);
 
   const getTreatments = async () => {
     let response = await RestService.getTreatments(
@@ -37,7 +37,7 @@
     treatments = response["treatments"];
     console.log(treatments, "treatments");
   };
-  getTreatments();
+  $: getTreatments($lang);
 </script>
 
 {#if sliders}
@@ -49,9 +49,7 @@
     <div
       class="w-full absolute flex flex-col font-semibold items-start top-20 px-2 right-0"
     >
-      <h3
-        class="text-4xl w-full text-light-300 tracking-tight font-thin"
-      >
+      <h3 class="text-4xl w-full text-light-300 tracking-tight font-thin">
         {sliders[0]?.title}
       </h3>
       <h3
@@ -77,16 +75,13 @@
 
     <div class=" mx-4 mt-52  ">
       {#if homes && treatments}
-      <div class="text-light-300 text-3xl tracking-tight  ">
-        {homes[0].treatment_spot}
-      </div>
-      <div class="text-dark-300 font-semibold tracking-tight text-5xl mb-10">
-        {homes[0].treatment_header}
-      </div>
-        <ImgSliderMob
-          {treatments}
-          customClass="2xl:pt-28 xl:pt-32 pt-68"
-        />
+        <div class="text-light-300 text-3xl tracking-tight  ">
+          {homes[0].treatment_spot}
+        </div>
+        <div class="text-dark-300 font-semibold tracking-tight text-5xl mb-10">
+          {homes[0].treatment_header}
+        </div>
+        <ImgSliderMob {treatments} customClass="2xl:pt-28 xl:pt-32 pt-68" />
       {/if}
     </div>
   </div>

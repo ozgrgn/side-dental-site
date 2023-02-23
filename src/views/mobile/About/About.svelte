@@ -11,11 +11,11 @@
     let response = await RestService.getAbouts(undefined, undefined, $lang);
     console.log(response, "response");
     about = response["abouts"][0];
-    images = about.images;
-    logos = about.logos;
+    images = about?.images;
+    logos = about?.logos;
     console.log(logos, "srgfere");
   };
-  getAbouts();
+  $: getAbouts($lang);
 </script>
 
 {#if about}
@@ -40,11 +40,13 @@
       </div>
  
       <div class="rounded-xl">
+        {#if images}
         <ImgSlider
           perPage="1"
           {images}
           customClass="h-64 w-full object-cover rounded-xl"
         />
+        {/if}
       </div>
       <div
       class="flex lg:flex-col lg:gap-4 lg:h-full lg:justify-around "

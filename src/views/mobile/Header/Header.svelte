@@ -26,7 +26,7 @@
     document.documentElement.setAttribute("lang", _lang);
     setTimeout(() => {
       lang.set(_lang);
-      window.location.reload();
+      // window.location.reload();
     }, 1); // cause svelte is faster than browser
   };
   let active = false;
@@ -49,7 +49,7 @@
     );
     treatments = response["treatments"];
   };
-  getTreatments();
+ $: getTreatments($lang);
 </script>
 
 <svelte:window bind:scrollY={y} />

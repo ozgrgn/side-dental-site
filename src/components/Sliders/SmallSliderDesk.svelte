@@ -25,7 +25,7 @@
           title={treatment.title}
           titleClass="text-light-300 "
           iconColor="#374151"
-          description={treatment.shortDesc.length>70?treatment.shortDesc.slice(0,70) +"...":treatment.shortDesc}
+          description={treatment?.shortDesc?.length && treatment?.shortDesc?.length>70?treatment.shortDesc.slice(0,70) +"...":treatment.shortDesc}
         />
       </SplideSlide>
     {/each}

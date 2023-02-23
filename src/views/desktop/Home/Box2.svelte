@@ -14,7 +14,7 @@
     contact = response["contacts"][0];
     console.log(contact, "contacts");
   };
-  getContacts();
+  $: getContacts($lang);
   export let header;
   export let text;
   let name;

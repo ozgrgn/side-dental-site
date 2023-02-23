@@ -16,7 +16,7 @@
     }
   }
   let langs;
-  console.log($translate)
+
   const getLangs = async () => {
     let response = await RestService.getLangs(undefined, undefined);
     langs = response["langs"];
@@ -26,7 +26,7 @@
     document.documentElement.setAttribute("lang", _lang);
     setTimeout(() => {
       lang.set(_lang);
-      window.location.reload();
+      // window.location.reload();
     }, 1); // cause svelte is faster than browser
   };
   let active = false;
@@ -50,7 +50,7 @@
     treatments = response["treatments"];
     console.log(treatments, "treatments");
   };
-  getTreatments();
+  $:  getTreatments($lang);
 </script>
 
 <div class="	">

@@ -72,9 +72,7 @@ const get = async (url, params) => {
   try {
     let response = await fetch(requestUrl, {
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${JSON.parse(localStorage.getItem("user"))?.token}`,
-      },
+   
     });
     return response.json();
   } catch (error) {

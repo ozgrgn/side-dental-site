@@ -12,14 +12,14 @@
 
     contact = response["contacts"][0];
   };
-  getContacts();
+  $: getContacts($lang);
   const getHomes = async () => {
     let response = await RestService.getHomes(undefined, undefined, $lang);
 
     homes = response["homes"];
     console.log(homes, "homes");
   };
-  getHomes();
+  $:  getHomes($lang);
 </script>
 
 <div class="relative bg-dark-300 h-96 w-full z-10">

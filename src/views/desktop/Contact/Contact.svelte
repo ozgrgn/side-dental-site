@@ -12,7 +12,7 @@
     contact = response["contacts"][0];
     console.log(contact, "contacts");
   };
-  getContacts();
+  $:  getContacts($lang);
 </script>
 
 <div class="relative bg-dark-300 h-96 w-full z-10">
@@ -48,7 +48,7 @@
         <div class="text-6xl font-bold tracking-tight text-light-300">
           {contact.spot}
         </div>
-        <h1 class="pl-2 text-6xl font-bold tracking-tight text-dark-300">
+        <h1 class="pl-3 text-6xl font-bold tracking-tight text-dark-300">
           {contact.title}
         </h1>
       {/if}

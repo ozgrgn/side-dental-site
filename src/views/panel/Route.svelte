@@ -36,7 +36,7 @@
   import UpdateTranslate from "./translate/UpdateTranslate.svelte";
   import CreateTranslate from "./translate/CreateTranslate.svelte";
   import Translates from "./translate/Translates.svelte";
-  import { modal } from "../../services/store";
+  import { modal, user } from "../../services/store";
   import Modal from "svelte-simple-modal";
   import UpdateReview from "./reviews/UpdateReview.svelte";
   import CreateReview from "./reviews/CreateReview.svelte";
@@ -69,7 +69,10 @@
   // onDestroy(() => {
   //   userAuthSubscription;
   // });
+
+
 </script>
+
 <SvelteToast />
 
 <Modal show={$modal} />
@@ -159,15 +162,12 @@
         <Route path="create-treatment" component={CreateTreatment} />
 
         <Route path="treatments" component={Treatments} />
-           <!-- Reviews -->
-           <Route
-           path="update-review/:reviewId"
-           component={UpdateReview}
-         />
- 
-         <Route path="create-review" component={CreateReview} />
- 
-         <Route path="reviews" component={Reviews} />
+        <!-- Reviews -->
+        <Route path="update-review/:reviewId" component={UpdateReview} />
+
+        <Route path="create-review" component={CreateReview} />
+
+        <Route path="reviews" component={Reviews} />
       </Router>
 
       <FooterAdmin />

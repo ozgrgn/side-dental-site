@@ -10,7 +10,7 @@
     filteredReviews = response["reviews"];
     console.log(filteredReviews, "reviews");
   };
-  getReviews();
+  $:  getReviews($lang);
 </script>
 
 <!-- REVIEWS -->

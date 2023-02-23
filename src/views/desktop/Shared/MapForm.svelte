@@ -18,7 +18,7 @@
     contact = response["contacts"][0];
     console.log(contact, "contacts");
   };
-  getContacts();
+  $: getContacts($lang);
 
   const addRes = async () => {
     if (!name || !phone) {

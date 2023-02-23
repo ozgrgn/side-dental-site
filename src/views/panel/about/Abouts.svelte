@@ -37,7 +37,7 @@
     console.log(abouts, "abouts");
     totalDataCount = response["count"];
   };
-  getAbouts();
+ getAbouts($lang);
 
   const deleteAbout = async (aboutId) => {
     let response = await RestService.deleteAbout(aboutId);

@@ -139,7 +139,7 @@
               values={[
                 { lang: "tr" },
                 { lang: "en"},
-                { lang: "ru" },
+                { lang: "de" },
               ]}
               title={"Dil Seçin"}
               valuesKey={"lang"}
