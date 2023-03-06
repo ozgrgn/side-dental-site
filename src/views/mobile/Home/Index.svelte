@@ -6,7 +6,7 @@
   import Map from "../Shared/Map.svelte";
   import Treatments from "../../../components/Shared/TreatmentCards.svelte";
   import Reviews from "$components/Shared/Reviews.svelte";
-  import { lang } from "../../../services/store";
+  import { lang,general } from "../../../services/store";
   import ImgSliderMob from "$components/Sliders/ImgSliderMob.svelte";
 
   let sliders;
@@ -39,7 +39,10 @@
   };
   $: getTreatments($lang);
 </script>
-
+<svelte:head
+  >  <title>Side Shine Dental</title>
+  <meta property="description" content={$general.shortDesc} />
+</svelte:head>
 {#if sliders}
   <div class="bg-dark-100 pb-20">
     <div class="flex justify-center relative">

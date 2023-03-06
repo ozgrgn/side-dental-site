@@ -6,11 +6,12 @@
   import Map from "../Shared/Map.svelte";
   import Treatments from "../../../components/Shared/TreatmentCards.svelte";
   import Reviews from "$components/Shared/Reviews.svelte";
-  import { lang } from "../../../services/store";
+  import { lang,general } from "../../../services/store";
 
   let sliders;
   let homes;
   let treatments;
+  console.log($general.shortDesc,"generaaa")
   const getSliders = async () => {
     let response = await RestService.getSliders(undefined, undefined, $lang);
     sliders = response["sliders"];
@@ -38,7 +39,10 @@
   };
   $: getTreatments($lang);
 </script>
-
+<svelte:head>
+  <title>Side Shine Dental</title>
+  <meta property="description" content={$general.shortDesc} />
+</svelte:head>
 {#if sliders}
   <div class="bg-dark-100 pb-20">
     <div class="flex justify-center relative w-full">

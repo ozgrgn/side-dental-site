@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --port 5002 --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postbuild": "npx svelte-sitemap --domain https://sideshinedental.com/ --out-dir dist"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
@@ -28,6 +29,7 @@
     "moment-timezone": "^0.5.37",
     "quill": "^1.3.7",
     "svelte-navigator": "^3.1.6",
-    "svelte-simple-modal": "^1.4.1"
+    "svelte-simple-modal": "^1.4.1",
+    "svelte-sitemap": "^2.6.0"
   }
 }

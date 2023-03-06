@@ -381,7 +381,6 @@ const updateAdmin = (adminId, data) => {
   });
 };
 const addRes = (data) => {
-
   return Http.post(`${ENV.API_URL}/reservation`,{
     ...data
   });

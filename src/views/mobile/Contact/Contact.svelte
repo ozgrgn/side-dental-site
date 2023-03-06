@@ -21,7 +21,10 @@
   };
   $:  getHomes($lang);
 </script>
-
+<svelte:head
+  >  <title>Side Shine Dental</title>
+  <meta property="description" content={$general.shortDesc} />
+</svelte:head>
 <div class="relative bg-dark-300 h-96 w-full z-10">
   <img
     class="absolute top-0 h-96 w-full opacity-10 right-0 object-cover z-1"

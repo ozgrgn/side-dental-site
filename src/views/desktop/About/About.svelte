@@ -1,7 +1,7 @@
 <script>
   import RestService from "$services/rest";
   import ImgSlider from "$components/ImgSlider.svelte";
-  import { lang } from "../../../services/store";
+  import { lang,general } from "../../../services/store";
 
   let about;
   let images;
@@ -18,7 +18,10 @@
 
 
 </script>
-
+<svelte:head
+  >  <title>Side Shine Dental</title>
+  <meta property="description" content={$general.shortDesc} />
+</svelte:head>
 {#if about}
   <div class="container mx-auto mb-10">
     <div class="px-6 pb-12 pt-24 border-b ">

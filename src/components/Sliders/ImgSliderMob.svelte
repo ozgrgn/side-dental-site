@@ -13,7 +13,6 @@
   aria-label="My Favorite Images"
   options={{
     perPage: 1,
-
     type: "loop",
     arrows: false,
     autoplay: true,

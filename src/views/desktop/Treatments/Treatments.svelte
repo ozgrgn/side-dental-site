@@ -33,6 +33,7 @@
       perma
     );
     treatment = response["treatments"] && response["treatments"][0];
+    console.log(treatment, "tettete");
   };
   $: getTreatment(perma, $lang);
   const addRes = async () => {
@@ -78,6 +79,13 @@
   };
   $: getTreatmentPages($lang);
 </script>
+
+<svelte:head
+  >{#if treatment}
+    <title>Side Shine Dental | {treatment.header}</title>
+    <meta property="description" content={treatment.shortDesc} />
+    {/if}
+</svelte:head>
 
 <div class="relative bg-dark-300 h-96 w-full z-10">
   <img
