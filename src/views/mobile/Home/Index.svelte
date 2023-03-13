@@ -41,7 +41,7 @@
 </script>
 <svelte:head
   >  <title>Side Shine Dental</title>
-  <meta property="description" content={$general.shortDesc} />
+  <meta name="description" content={$general.shortDesc} />
 </svelte:head>
 {#if sliders}
   <div class="bg-dark-100 pb-20">

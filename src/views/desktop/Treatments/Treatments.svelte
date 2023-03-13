@@ -83,7 +83,7 @@
 <svelte:head
   >{#if treatment}
     <title>Side Shine Dental | {treatment.header}</title>
-    <meta property="description" content={treatment.shortDesc} />
+    <meta name="description" content={treatment.shortDesc} />
     {/if}
 </svelte:head>
 

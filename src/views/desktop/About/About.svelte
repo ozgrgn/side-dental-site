@@ -20,7 +20,7 @@
 </script>
 <svelte:head
   >  <title>Side Shine Dental</title>
-  <meta property="description" content={$general.shortDesc} />
+  <meta name="description" content={$general.shortDesc} />
 </svelte:head>
 {#if about}
   <div class="container mx-auto mb-10">
