@@ -13,7 +13,7 @@
   import { link } from "svelte-navigator";
 
   export let perma;
-
+console.log(perma,"permemem")
   let name;
   let email;
   let phone;

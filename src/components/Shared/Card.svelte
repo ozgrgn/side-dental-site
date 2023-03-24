@@ -7,7 +7,7 @@
 </script>
 
 {#if treatment}
-  <div class="flex flex-col relative rounded-md">
+  <a href="/treatments/{treatment?.perma}" class="flex flex-col relative rounded-md">
     <img
       class="w-full rounded-t-md "
       src={treatment?.images[0]?.image}
@@ -42,5 +42,5 @@
         </button>
       </div>
     </div>
-  </div>
+  </a>
 {/if}
