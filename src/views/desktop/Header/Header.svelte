@@ -166,7 +166,7 @@
             ? 'bg-white'
             : 'bg-transparent'}"
         >
-          <a href={"/" + $general.facebook} target="_blank">
+          <a href={$general.facebook} target="_blank">
             <svg
               class="h-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +176,7 @@
               {@html Svg.facebook}
             </svg>
           </a>
-          <a href={"/" + $general.instagram} target="_blank">
+          <a href={$general.instagram} target="_blank">
             <svg
               class="h-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +186,7 @@
               {@html Svg.instagram}
             </svg>
           </a>
-          <a href={"/" + $general.youtube} target="_blank">
+          <a href={$general.youtube} target="_blank">
             <svg
               class="h-6"
               xmlns="http://www.w3.org/2000/svg"
